@@ -36,7 +36,7 @@ The application uses a "Prompt Engineering" logic to construct a comprehensive i
 Because this tool is built as a standalone HTML file using CDNs, there is **no installation** required.
 
 ### Option 1: Run Locally
-1.  Download the `seo_geo.html` file from this repository.
+1.  Download the `SEO-GEO-Generator.html` file from this repository.
 2.  Double-click the file to open it in any modern web browser (Chrome, Firefox, Edge, Safari).
 
 ### Option 2: Host Static
@@ -53,7 +53,7 @@ Upload `seo_geo.html` to any static hosting service (GitHub Pages, Netlify, Verc
 
 To add more languages or modify the prompt logic:
 
-1.  Open `seo_geo.html` in a text editor.
+1.  Open `SEO-GEO-Generator.html` in a text editor.
 2.  Locate the `PROMPT_TEMPLATES` constant to add new language keys.
 3.  Modify the `buildPrompt()` function to change how the text is assembled.
 
