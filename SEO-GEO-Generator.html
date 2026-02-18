@@ -183,9 +183,9 @@
                 // 3. GEO Specifics
                 if (enableGEO) {
                     promptParts.push(`\n### GEO (GENERATIVE ENGINE OPTIMIZATION) STRATEGY\n${tmpl.geo_instruction}`);
-                    promptParts.push("- Ensure the content is structured with clear H2/H3 questions that mimic user queries.");
-                    promptParts.push("- Prioritize direct answers in the first sentence of each section.");
-                    promptParts.push("- Cite credible sources or statistics where possible to increase authority.");
+                    promptParts.push("- Ensure the content is structured with clear H2/H3 questions that mimic user queries for better AI comprehension.");
+                    promptParts.push("- Prioritize direct answers in the first sentence of each section to increase chances of being featured in AI-generated summaries.");
+                    promptParts.push("- Cite credible sources or statistics where possible to increase authority and trustworthiness for AI algorithms.");
                 }
 
                 // 4. Output Requirements (Kept largely in English for structure, but headers translated if feasible, keeping simple for now)
@@ -196,17 +196,17 @@
                 }
                 
                 if (enableSerp) {
-                    promptParts.push(`2. **SERP Snippet Optimization**: Write a paragraph (130-160 characters) specifically designed to win a Featured Snippet (Position Zero) for the main keyword.`);
+                    promptParts.push(`2. **SERP Snippet Optimization**: Write a paragraph (130-160 characters) specifically designed to win a Featured Snippet (Position Zero) for the main keyword. Focus on being concise, factual, and directly answering the implied user query.`);
                 }
 
                 if (enableSchema) {
-                    promptParts.push(`3. **Schema Markup**: Provide valid JSON-LD code for 'Article' or 'FAQPage' schema relevant to this topic.`);
+                    promptParts.push(`3. **Schema Markup**: Provide valid JSON-LD code for 'Article' or 'FAQPage' schema relevant to this topic. Ensure the schema is optimized for SEO and includes relevant keywords without keyword stuffing.`);
                 }
 
                 // 5. Final Formatting
                 promptParts.push(`\n${tmpl.format}`);
                 promptParts.push("- Use Markdown.");
-                promptParts.push("- Be concise and eliminate fluff.");
+                promptParts.push("- Be concise and eliminate fluff. Focus on actionable, specific outputs that can be directly implemented.");
                 if(outputLang !== 'en') promptParts.push(`- ${tmpl.lang_instruction}`); // Re-iterate language constraint at end
 
                 setGeneratedPrompt(promptParts.join('\n'));
@@ -267,7 +267,7 @@
                                         name="topic"
                                         value={inputs.topic}
                                         onChange={handleInputChange}
-                                        placeholder="e.g. Best Hiking Boots 2024"
+                                        placeholder="e.g. best motocross boots"
                                         className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                                     />
                                 </div>
@@ -278,7 +278,7 @@
                                         name="keywords"
                                         value={inputs.keywords}
                                         onChange={handleInputChange}
-                                        placeholder="e.g. waterproof boots, lightweight hiking shoes, ankle support"
+                                        placeholder="e.g. waterproof boots, helmet with MIPS, homologated"
                                         className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all h-24 resize-none"
                                     />
                                 </div>
@@ -291,7 +291,7 @@
                                             name="audience"
                                             value={inputs.audience}
                                             onChange={handleInputChange}
-                                            placeholder="e.g. Beginners, Pro Hikers"
+                                            placeholder="e.g. motocross riders"
                                             className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none"
                                         />
                                     </div>
@@ -302,7 +302,7 @@
                                             name="competitors"
                                             value={inputs.competitors}
                                             onChange={handleInputChange}
-                                            placeholder="e.g. REI, OutdoorGearLab"
+                                            placeholder="e.g. FOX Racing"
                                             className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none"
                                         />
                                     </div>
