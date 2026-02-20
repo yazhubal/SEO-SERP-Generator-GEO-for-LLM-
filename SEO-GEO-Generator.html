@@ -8,14 +8,24 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // enable class-based dark mode
+        tailwind.config = { darkMode: 'class' };
+    </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        /* night theme overrides when parent has .dark */
+        .dark body { background-color: #1a202c; color: #e2e8f0; }
         .glass-panel {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .dark .glass-panel {
+            background: rgba(31, 41, 55, 0.75);
+            border: 1px solid rgba(55, 65, 81, 0.8);
         }
         .animate-fade-in { animation: fadeIn 0.3s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
@@ -192,6 +202,16 @@
             });
             const [generatedPrompt, setGeneratedPrompt] = useState('');
             const [copySuccess, setCopySuccess] = useState(false);
+            const [theme, setTheme] = useState('day'); // 'day' or 'night'
+
+            // toggle dark class on <html>
+            useEffect(() => {
+                if (theme === 'night') {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            }, [theme]);
 
             // Update Prompt whenever inputs or language change
             useEffect(() => {
@@ -288,23 +308,30 @@
             };
 
             return (
-                <div className="min-h-screen p-4 md:p-8 flex flex-col items-center justify-center">
+                <div className="min-h-screen p-4 md:p-8 flex flex-col items-center justify-center relative bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
                     
+                    {/* theme switch button */}
+                    <button
+                        onClick={() => setTheme(theme === 'day' ? 'night' : 'day')}
+                        className="absolute top-4 right-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 shadow hover:scale-105 transition">
+                        <i className={`fa-solid ${theme === 'day' ? 'fa-sun' : 'fa-moon'}`}></i>
+                    </button>
+
                     <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8">
                         
                         {/* LEFT COLUMN - INPUTS */}
                         <div className="glass-panel rounded-2xl shadow-xl p-6 md:p-8 animate-fade-in flex flex-col gap-6">
                             <div className="border-b border-gray-200 pb-4 mb-2">
-                                <h1 className="text-3xl font-bold text-slate-800 flex items-center gap-3">
+                                <h1 className="text-3xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-3">
                                     <i className="fa-solid fa-layer-group text-blue-600"></i>
                                     Prompt Canvas
                                 </h1>
-                                <p className="text-slate-500 mt-2">Configure your advanced SEO/GEO & Content prompt.</p>
+                                <p className="text-slate-500 dark:text-slate-400 mt-2">Configure your advanced SEO/GEO & Content prompt.</p>
                             </div>
 
                             {/* Language Selector */}
                             <div>
-                                <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">{UI_LABELS.langTitle}</label>
+                                <label className="block text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-2">{UI_LABELS.langTitle}</label>
                                 <div className="flex flex-wrap gap-2">
                                     {['en', 'de', 'fr', 'es', 'pl', 'it'].map((lang) => (
                                         <button
@@ -313,7 +340,7 @@
                                             className={`px-4 py-2 rounded-lg font-medium transition-all ${
                                                 outputLang === lang 
                                                 ? 'bg-blue-600 text-white shadow-md transform scale-105' 
-                                                : 'bg-white text-slate-600 border border-gray-200 hover:bg-gray-50'
+                                                : 'bg-white dark:bg-gray-700 text-slate-600 dark:text-gray-200 border border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600'
                                             }`}
                                         >
                                             {lang.toUpperCase()}
@@ -325,67 +352,67 @@
                             {/* Form Fields */}
                             <div className="space-y-4">
                                 <div>
-                                    <label className="block text-sm font-semibold text-slate-700 mb-1">{UI_LABELS.topic}</label>
+                                    <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-1">{UI_LABELS.topic}</label>
                                     <input 
                                         type="text" 
                                         name="topic"
                                         value={inputs.topic}
                                         onChange={handleInputChange}
                                         placeholder="e.g. Best Hiking Boots 2024"
-                                        className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                                        className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                                     />
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-semibold text-slate-700 mb-1">{UI_LABELS.keywords}</label>
+                                    <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-1">{UI_LABELS.keywords}</label>
                                     <textarea 
                                         name="keywords"
                                         value={inputs.keywords}
                                         onChange={handleInputChange}
                                         placeholder="e.g. waterproof boots, lightweight hiking shoes, ankle support"
-                                        className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all h-24 resize-none"
+                                        className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all h-24 resize-none"
                                     />
                                 </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
-                                        <label className="block text-sm font-semibold text-slate-700 mb-1">{UI_LABELS.audience}</label>
+                                        <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-1">{UI_LABELS.audience}</label>
                                         <input 
                                             type="text" 
                                             name="audience"
                                             value={inputs.audience}
                                             onChange={handleInputChange}
                                             placeholder="e.g. Beginners, Pro Hikers"
-                                            className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none"
+                                            className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 outline-none"
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-semibold text-slate-700 mb-1">{UI_LABELS.competitors}</label>
+                                        <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-1">{UI_LABELS.competitors}</label>
                                         <input 
                                             type="text" 
                                             name="competitors"
                                             value={inputs.competitors}
                                             onChange={handleInputChange}
                                             placeholder="e.g. REI, OutdoorGearLab"
-                                            className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none"
+                                            className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 outline-none"
                                         />
                                     </div>
                                 </div>
                                 
                                 <div>
-                                    <label className="block text-sm font-semibold text-slate-700 mb-1">{UI_LABELS.tone}</label>
+                                    <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-1">{UI_LABELS.tone}</label>
                                     <input 
                                         type="text" 
                                         name="tone"
                                         value={inputs.tone}
                                         onChange={handleInputChange}
-                                        className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none"
+                                        className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 outline-none"
                                     />
                                 </div>
                             </div>
 
                             {/* Toggles */}
-                            <div className="bg-slate-50 p-4 rounded-xl space-y-3 border border-slate-100">
+                            <div className="bg-slate-50 dark:bg-slate-800 p-4 rounded-xl space-y-3 border border-slate-100 dark:border-slate-700">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                     <label className="flex items-center space-x-3 cursor-pointer">
                                         <input type="checkbox" name="enableGEO" checked={inputs.enableGEO} onChange={handleInputChange} className="w-5 h-5 text-blue-600 rounded focus:ring-blue-500" />
@@ -417,17 +444,17 @@
                         {/* RIGHT COLUMN - PREVIEW */}
                         <div className="flex flex-col h-full gap-4">
                              <div className="glass-panel rounded-2xl shadow-xl p-1 flex-grow flex flex-col relative overflow-hidden h-[600px] lg:h-auto">
-                                <div className="absolute top-0 left-0 right-0 bg-gradient-to-b from-white via-white to-transparent p-4 z-10 border-b border-gray-100 flex justify-between items-center">
-                                    <span className="text-xs font-bold tracking-wider text-slate-400 uppercase">Generated Prompt Preview</span>
+                                <div className="absolute top-0 left-0 right-0 bg-gradient-to-b from-white via-white to-transparent dark:from-gray-800 dark:via-gray-800 p-4 z-10 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center">
+                                    <span className="text-xs font-bold tracking-wider text-slate-400 dark:text-slate-500 uppercase">Generated Prompt Preview</span>
                                     <div className="flex items-center gap-2">
                                         <div className={`w-2 h-2 rounded-full ${inputs.topic ? 'bg-green-500' : 'bg-orange-400 animate-pulse'}`}></div>
-                                        <span className="text-xs text-slate-400">{inputs.topic ? 'Ready to copy' : 'Waiting for input...'}</span>
+                                        <span className="text-xs text-slate-400 dark:text-slate-500">{inputs.topic ? 'Ready to copy' : 'Waiting for input...'}</span>
                                     </div>
                                 </div>
-                                <div className="flex-grow overflow-auto p-6 pt-16 bg-slate-900 text-slate-300 font-mono text-sm leading-relaxed whitespace-pre-wrap">
+                                <div className="flex-grow overflow-auto p-6 pt-16 bg-white dark:bg-slate-900 text-gray-900 dark:text-slate-300 font-mono text-sm leading-relaxed whitespace-pre-wrap">
                                     {generatedPrompt}
                                 </div>
-                                <div className="p-4 bg-white border-t border-gray-100 flex justify-end">
+                                <div className="p-4 bg-white dark:bg-gray-800 border-t border-gray-100 dark:border-gray-700 flex justify-end">
                                     <button 
                                         onClick={copyToClipboard}
                                         className={`flex items-center gap-2 px-6 py-3 rounded-lg font-bold text-white transition-all shadow-lg ${
@@ -452,13 +479,13 @@
                              </div>
                              
                              {/* Tip Card */}
-                             <div className="bg-blue-50 border border-blue-100 rounded-xl p-4 flex gap-4 items-start">
-                                <div className="bg-blue-100 p-2 rounded-lg text-blue-600">
+                             <div className="bg-blue-50 dark:bg-blue-900 border border-blue-100 dark:border-blue-800 rounded-xl p-4 flex gap-4 items-start">
+                                <div className="bg-blue-100 dark:bg-blue-800 p-2 rounded-lg text-blue-600 dark:text-blue-300">
                                     <i className="fa-solid fa-lightbulb"></i>
                                 </div>
                                 <div>
-                                    <h4 className="font-bold text-blue-900 text-sm">Pro Tip for GEO & Blogs</h4>
-                                    <p className="text-blue-800 text-xs mt-1">
+                                    <h4 className="font-bold text-blue-900 dark:text-blue-200 text-sm">Pro Tip for GEO & Blogs</h4>
+                                    <p className="text-blue-800 dark:text-blue-300 text-xs mt-1">
                                         For Blog Generation, ensuring you have <strong>LSI Keywords</strong> in the secondary keywords field helps the AI write more naturally without keyword stuffing, which is crucial for GEO ranking.
                                     </p>
                                 </div>
