@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced SEO & GEO Prompt Canvas</title>
+    <title>Advanced SEO, GEO & Content Prompt Canvas</title>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -27,7 +27,7 @@
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
 
-        // --- UI Labels (Always English) ---
+        // --- UI Labels (Always English for the Interface) ---
         const UI_LABELS = {
             topic: "Topic / Main Keyword",
             keywords: "Secondary Keywords (LSI)",
@@ -38,6 +38,7 @@
             schema: "Include Schema Markup (JSON-LD)",
             meta: "Generate Meta Title & Description",
             serp: "Generate SERP Preview Text",
+            blog: "Generate Blog Post Content", // New Label
             copy: "Copy Prompt",
             langTitle: "Output Language"
         };
@@ -45,88 +46,130 @@
         // --- Prompt Templates (Target Languages) ---
         const PROMPT_TEMPLATES = {
             en: {
-                role: "Act as an expert SEO Specialist and Generative Engine Optimization (GEO) strategist.",
-                task: "Your task is to generate optimized meta data, SERP snippets, and a content structure.",
+                role: "Act as an expert Content Writer, SEO Specialist, and Generative Engine Optimization (GEO) strategist.",
+                task: "Your task is to generate optimized meta data, SERP snippets, and high-quality blog content.",
                 context: "I need to rank for the following topic and keywords.",
                 geo_instruction: "Focus on 'Answer Engine Optimization'. Create concise, factual definitions (40-60 words) for key entities to be picked up by AI overviews.",
                 tone_instruction: "Write in the following tone:",
                 audience_instruction: "Target Audience:",
-                lang_instruction: "IMPORTANT: Write all outputs strictly in English. Do not mix languages.",
+                lang_instruction: "IMPORTANT: Write all outputs strictly in English.",
                 format: "Output Format:",
                 lbl_topic: "Topic",
                 lbl_keywords: "Keywords",
                 lbl_audience: "Audience",
-                lbl_competitors: "Competitors"
+                lbl_competitors: "Competitors",
+                // New Blog Specifics
+                blog_header: "BLOG POST GENERATION",
+                blog_task: "Write a blog post based on the topic and keywords provided above.",
+                blog_length: "Length: Keep the content 'average' but concise—approximately 400 to 600 words. The entire post should fit comfortably on a single desktop screen without requiring excessive scrolling.",
+                blog_structure: "Structure: Use a clear, scannable structure. Include a Catchy Title (with main keyword), an Introduction that hooks the reader, 2-3 H2 subheaders, bullet points to reduce visual clutter, and a Conclusion with a CTA.",
+                blog_seo: "SEO: Naturally weave the provided keywords into the text without 'keyword stuffing'.",
+                blog_goal: "Output Goal: A high-impact, easy-to-read post that informs the reader quickly without fluff."
             },
             de: {
-                role: "Handeln Sie als erfahrener SEO-Spezialist und Stratege für Generative Engine Optimization (GEO).",
-                task: "Ihre Aufgabe ist es, optimierte Metadaten, SERP-Snippets und eine Inhaltsstruktur zu erstellen.",
+                role: "Handeln Sie als erfahrener Content-Autor, SEO-Spezialist und Stratege für Generative Engine Optimization (GEO).",
+                task: "Ihre Aufgabe ist es, optimierte Metadaten, SERP-Snippets und hochwertige Blog-Inhalte zu erstellen.",
                 context: "Ich muss für das folgende Thema und die folgenden Keywords ranken.",
                 geo_instruction: "Konzentrieren Sie sich auf 'Answer Engine Optimization'. Erstellen Sie prägnante, faktische Definitionen (40-60 Wörter) für Schlüsselbegriffe, um von KI-Overviews erfasst zu werden.",
                 tone_instruction: "Schreiben Sie in folgendem Tonfall:",
                 audience_instruction: "Zielgruppe:",
-                lang_instruction: "WICHTIG: Schreiben Sie alle Ausgaben strikt auf Deutsch. Mischen Sie keine Sprachen.",
+                lang_instruction: "WICHTIG: Schreiben Sie alle Ausgaben strikt auf Deutsch.",
                 format: "Ausgabeformat:",
                 lbl_topic: "Thema",
                 lbl_keywords: "Keywords",
                 lbl_audience: "Zielgruppe",
-                lbl_competitors: "Wettbewerber"
+                lbl_competitors: "Wettbewerber",
+                // Blog Specifics DE
+                blog_header: "BLOG-POST ERSTELLUNG",
+                blog_task: "Schreiben Sie einen Blogbeitrag basierend auf dem oben genannten Thema und den Keywords.",
+                blog_length: "Länge: Halten Sie den Inhalt 'durchschnittlich' lang, aber prägnante – ca. 400 bis 600 Wörter. Der gesamte Beitrag sollte bequem auf einen einzigen Desktop-Bildschirm passen.",
+                blog_structure: "Struktur: Verwenden Sie eine klare, scannbare Struktur. Ein eingängiger Titel (mit Hauptkeyword), eine Einleitung, die den Leser fesselt, 2-3 H2-Unterüberschriften, Aufzählungszeichen und ein Fazit mit CTA.",
+                blog_seo: "SEO: Weben Sie die bereitgestellten Keywords natürlich in den Text ein, ohne 'Keyword Stuffing'.",
+                blog_goal: "Ziel der Ausgabe: Ein wirkungsvoller, leicht lesbarer Beitrag, der den Leser schnell und ohne überflüssige Informationen informiert."
             },
             fr: {
-                role: "Agissez en tant que spécialiste SEO expert et stratège en optimisation pour les moteurs génératifs (GEO).",
-                task: "Votre tâche consiste à générer des métadonnées optimisées, des extraits SERP et une structure de contenu.",
+                role: "Agissez en tant que rédacteur de contenu expert, spécialiste SEO et stratège en GEO.",
+                task: "Votre tâche consiste à générer des métadonnées optimisées, des extraits SERP et un contenu de blog de haute qualité.",
                 context: "Je dois me classer pour le sujet et les mots-clés suivants.",
-                geo_instruction: "Concentrez-vous sur l'optimisation pour les moteurs de réponse. Créez des définitions factuelles et concises (40-60 mots) pour les entités clés afin d'être repéré par les aperçus IA.",
+                geo_instruction: "Concentrez-vous sur l'optimisation pour les moteurs de réponse. Créez des définitions factuelles et concises (40-60 mots) pour les entités clés.",
                 tone_instruction: "Écrivez avec le ton suivant :",
                 audience_instruction: "Public cible :",
-                lang_instruction: "IMPORTANT : Rédigez toutes les réponses strictement en Français. Ne mélangez pas les langues.",
+                lang_instruction: "IMPORTANT : Rédigez toutes les réponses strictement en Français.",
                 format: "Format de sortie :",
                 lbl_topic: "Sujet",
                 lbl_keywords: "Mots-clés",
                 lbl_audience: "Public",
-                lbl_competitors: "Concurrents"
+                lbl_competitors: "Concurrents",
+                // Blog Specifics FR
+                blog_header: "GÉNÉRATION D'ARTICLE DE BLOG",
+                blog_task: "Rédigez un article de blog basé sur le sujet et les mots-clés fournis.",
+                blog_length: "Longueur : Environ 400 à 600 mots. L'article doit tenir confortablement sur un seul écran de bureau.",
+                blog_structure: "Structure : Titre accrocheur (avec mot-clé), Introduction (accroche), 2-3 sous-titres H2, puces pour la lisibilité, et une Conclusion avec appel à l'action (CTA).",
+                blog_seo: "SEO : Intégrez naturellement les mots-clés fournis sans faire de bourrage de mots-clés.",
+                blog_goal: "Objectif : Un article à fort impact, facile à lire, qui informe le lecteur rapidement sans superflu."
             },
             es: {
-                role: "Actúa como un especialista experto en SEO y estratega de Optimización de Motores Generativos (GEO).",
-                task: "Tu tarea es generar metadatos optimizados, fragmentos de SERP y una estructura de contenido.",
+                role: "Actúa como redactor experto de contenidos, especialista en SEO y estratega de GEO.",
+                task: "Tu tarea es generar metadatos optimizados, fragmentos de SERP y contenido de blog de alta calidad.",
                 context: "Necesito posicionarme para el siguiente tema y palabras clave.",
-                geo_instruction: "Céntrate en la 'Optimización de Motores de Respuesta'. Crea definiciones concisas y fácticas (40-60 palabras) para entidades clave para ser captado por los resúmenes de IA.",
+                geo_instruction: "Céntrate en la 'Optimización de Motores de Respuesta'. Crea definiciones concisas y fácticas (40-60 palabras).",
                 tone_instruction: "Escribe con el siguiente tono:",
                 audience_instruction: "Público objetivo:",
-                lang_instruction: "IMPORTANTE: Escribe todas las salidas estrictamente en Español. No mezcles idiomas.",
+                lang_instruction: "IMPORTANTE: Escribe todas las salidas estrictamente en Español.",
                 format: "Formato de salida:",
                 lbl_topic: "Tema",
                 lbl_keywords: "Palabras clave",
                 lbl_audience: "Audiencia",
-                lbl_competitors: "Competidores"
+                lbl_competitors: "Competidores",
+                // Blog Specifics ES
+                blog_header: "GENERACIÓN DE POST PARA BLOG",
+                blog_task: "Escribe un artículo de blog basado en el tema y las palabras clave proporcionadas.",
+                blog_length: "Longitud: Aproximadamente 400 a 600 palabras. Todo el post debe caber cómodamente en una sola pantalla de escritorio.",
+                blog_structure: "Estructura: Título pegadizo (con palabra clave), Introducción (gancho), 2-3 subtítulos H2, viñetas y una conclusión con CTA.",
+                blog_seo: "SEO: Integra naturalmente las palabras clave proporcionadas sin saturar el texto.",
+                blog_goal: "Objetivo: Un post de alto impacto y fácil lectura que informe al lector rápidamente sin relleno."
             },
             it: {
-                role: "Agisci come esperto specialista SEO e stratega di Generative Engine Optimization (GEO).",
-                task: "Il tuo compito è generare metadati ottimizzati, snippet SERP e una struttura dei contenuti.",
+                role: "Agisci come esperto Content Writer, specialista SEO e stratega GEO.",
+                task: "Il tuo compito è generare metadati ottimizzati, snippet SERP e contenuti blog di alta qualità.",
                 context: "Devo posizionarmi per il seguente argomento e parole chiave.",
-                geo_instruction: "Concentrati sulla 'Answer Engine Optimization'. Crea definizioni concise e fattuali (40-60 parole) per le entità chiave per essere rilevato dalle panoramiche AI.",
+                geo_instruction: "Concentrati sulla 'Answer Engine Optimization'. Crea definizioni concise e fattuali.",
                 tone_instruction: "Scrivi con il seguente tono:",
                 audience_instruction: "Target di riferimento:",
-                lang_instruction: "IMPORTANTE: Scrivi tutti gli output rigorosamente in Italiano. Non mescolare lingue.",
+                lang_instruction: "IMPORTANTE: Scrivi tutti gli output rigorosamente in Italiano.",
                 format: "Formato di output:",
                 lbl_topic: "Argomento",
                 lbl_keywords: "Parole chiave",
                 lbl_audience: "Target",
-                lbl_competitors: "Concorrenti"
+                lbl_competitors: "Concorrenti",
+                // Blog Specifics IT
+                blog_header: "GENERAZIONE ARTICOLO BLOG",
+                blog_task: "Scrivi un post del blog basato sull'argomento e sulle parole chiave fornite.",
+                blog_length: "Lunghezza: Circa 400-600 parole. L'intero post dovrebbe adattarsi comodamente a una singola schermata desktop.",
+                blog_structure: "Struttura: Titolo accattivante (con parola chiave), Introduzione (gancio), 2-3 sottotitoli H2, elenchi puntati e conclusione con CTA.",
+                blog_seo: "SEO: Inserisci naturalmente le parole chiave fornite senza forzature.",
+                blog_goal: "Obiettivo: Un post di alto impatto e facile lettura che informi rapidamente il lettore senza fronzoli."
             },
             pl: {
-                role: "Działaj jako ekspert SEO i strateg Generative Engine Optimization (GEO).",
-                task: "Twoim zadaniem jest wygenerowanie zoptymalizowanych metadanych, fragmentów SERP i struktury treści.",
+                role: "Działaj jako ekspert Content Writer, specjalista SEO i strateg GEO.",
+                task: "Twoim zadaniem jest wygenerowanie zoptymalizowanych metadanych, fragmentów SERP i wysokiej jakości treści blogowych.",
                 context: "Muszę uzyskać ranking dla następującego tematu i słów kluczowych.",
-                geo_instruction: "Skup się na 'AI SEO Engine Optimization'. Twórz zwięzłe, rzeczowe definicje (40-60 słów) dla kluczowych podmiotów, aby zostały wychwycone przez podsumowania AI. To klucz do zdobycia pozycji zero w wynikach generowanych przez AI.",
+                geo_instruction: "Skup się na 'Optymalizacji pod kątem silników odpowiedzi'. Twórz zwięzłe, rzeczowe definicje.",
                 tone_instruction: "Pisz w następującym tonie:",
                 audience_instruction: "Grupa docelowa:",
-                lang_instruction: "WAŻNE: Pisz wszystkie wyniki ściśle w języku polskim. Nie mieszaj języków.",
+                lang_instruction: "WAŻNE: Pisz wszystkie wyniki ściśle w języku polskim.",
                 format: "Format wyjściowy:",
                 lbl_topic: "Temat",
                 lbl_keywords: "Słowa kluczowe",
                 lbl_audience: "Odbiorcy",
-                lbl_competitors: "Konkurencja"
+                lbl_competitors: "Konkurencja",
+                // Blog Specifics PL
+                blog_header: "GENEROWANIE WPISU NA BLOGA",
+                blog_task: "Napisz wpis na bloga na podstawie podanego tematu i słów kluczowych.",
+                blog_length: "Długość: Około 400 do 600 słów. Cały wpis powinien wygodnie mieścić się na jednym ekranie komputera.",
+                blog_structure: "Struktura: Chwytliwy tytuł (ze słowem kluczowym), Wstęp (haczyk), 2-3 podtytuły H2, wypunktowania i zakończenie z CTA.",
+                blog_seo: "SEO: Naturalnie wpleć podane słowa kluczowe w tekst bez upychania ich na siłę.",
+                blog_goal: "Cel: Wpis o dużym wpływie, łatwy do przeczytania, który szybko informuje czytelnika bez zbędnych treści."
             }
         };
 
@@ -141,7 +184,8 @@
                 enableGEO: true,
                 enableSchema: true,
                 enableMeta: true,
-                enableSerp: true
+                enableSerp: true,
+                enableBlog: false // New State
             });
             const [generatedPrompt, setGeneratedPrompt] = useState('');
             const [copySuccess, setCopySuccess] = useState(false);
@@ -160,7 +204,7 @@
             };
 
             const buildPrompt = () => {
-                const { topic, keywords, audience, competitors, tone, enableGEO, enableSchema, enableMeta, enableSerp } = inputs;
+                const { topic, keywords, audience, competitors, tone, enableGEO, enableSchema, enableMeta, enableSerp, enableBlog } = inputs;
                 const tmpl = PROMPT_TEMPLATES[outputLang];
                 
                 // Use English placeholder if empty, but user inputs are preserved
@@ -183,31 +227,48 @@
                 // 3. GEO Specifics
                 if (enableGEO) {
                     promptParts.push(`\n### GEO (GENERATIVE ENGINE OPTIMIZATION) STRATEGY\n${tmpl.geo_instruction}`);
-                    promptParts.push("- Ensure the content is structured with clear H2/H3 questions that mimic user queries for better AI comprehension.");
-                    promptParts.push("- Prioritize direct answers in the first sentence of each section to increase chances of being featured in AI-generated summaries.");
-                    promptParts.push("- Cite credible sources or statistics where possible to increase authority and trustworthiness for AI algorithms.");
+                    promptParts.push("- Ensure the content is structured with clear H2/H3 questions that mimic user queries.");
+                    promptParts.push("- Prioritize direct answers in the first sentence of each section.");
+                    promptParts.push("- Cite credible sources or statistics where possible to increase authority.");
                 }
 
-                // 4. Output Requirements (Kept largely in English for structure, but headers translated if feasible, keeping simple for now)
+                // 4. Output Requirements
                 promptParts.push(`\n### TASK & OUTPUTS`);
                 
+                let stepCounter = 1;
+
                 if (enableMeta) {
-                    promptParts.push(`1. **Meta Data**: Generate 3 variations of Page Titles (max 65 chars) and Meta Descriptions (max 155 chars). Ensure they are click-worthy and keyword-rich.`);
+                    promptParts.push(`${stepCounter}. **Meta Data**: Generate 3 variations of Page Titles (max 60 chars) and Meta Descriptions (max 155 chars). Ensure they are click-worthy and keyword-rich.`);
+                    stepCounter++;
                 }
                 
                 if (enableSerp) {
-                    promptParts.push(`2. **SERP Snippet Optimization**: Write a paragraph (130-160 characters) specifically designed to win a Featured Snippet (Position Zero) for the main keyword. Focus on being concise, factual, and directly answering the implied user query.`);
+                    promptParts.push(`${stepCounter}. **SERP Snippet Optimization**: Write a paragraph (40-50 words) specifically designed to win a Featured Snippet (Position Zero) for the main keyword.`);
+                    stepCounter++;
                 }
 
                 if (enableSchema) {
-                    promptParts.push(`3. **Schema Markup**: Provide valid JSON-LD code for 'Article' or 'FAQPage' schema relevant to this topic. Ensure the schema is optimized for SEO and includes relevant keywords without keyword stuffing.`);
+                    promptParts.push(`${stepCounter}. **Schema Markup**: Provide valid JSON-LD code for 'Article' or 'FAQPage' schema relevant to this topic.`);
+                    stepCounter++;
                 }
 
-                // 5. Final Formatting
+                // 5. Blog Post Section (If checked)
+                if (enableBlog) {
+                    promptParts.push(`\n### ${tmpl.blog_header}`);
+                    promptParts.push(`${tmpl.blog_task}`);
+                    promptParts.push(`**Constraints & Formatting:**`);
+                    promptParts.push(`- ${tmpl.blog_length}`);
+                    promptParts.push(`- ${tmpl.blog_structure}`);
+                    promptParts.push(`- ${tmpl.blog_seo}`);
+                    promptParts.push(`- ${tmpl.tone_instruction} ${tone}`);
+                    promptParts.push(`- ${tmpl.blog_goal}`);
+                }
+
+                // 6. Final Formatting
                 promptParts.push(`\n${tmpl.format}`);
                 promptParts.push("- Use Markdown.");
-                promptParts.push("- Be concise and eliminate fluff. Focus on actionable, specific outputs that can be directly implemented.");
-                if(outputLang !== 'en') promptParts.push(`- ${tmpl.lang_instruction}`); // Re-iterate language constraint at end
+                promptParts.push("- Be concise and eliminate fluff.");
+                if(outputLang !== 'en') promptParts.push(`- ${tmpl.lang_instruction}`);
 
                 setGeneratedPrompt(promptParts.join('\n'));
             };
@@ -235,7 +296,7 @@
                                     <i className="fa-solid fa-layer-group text-blue-600"></i>
                                     Prompt Canvas
                                 </h1>
-                                <p className="text-slate-500 mt-2">Configure your advanced SEO/GEO prompt.</p>
+                                <p className="text-slate-500 mt-2">Configure your advanced SEO/GEO & Content prompt.</p>
                             </div>
 
                             {/* Language Selector */}
@@ -258,7 +319,7 @@
                                 </div>
                             </div>
 
-                            {/* Form Fields - LABELS ARE FIXED TO ENGLISH via UI_LABELS */}
+                            {/* Form Fields */}
                             <div className="space-y-4">
                                 <div>
                                     <label className="block text-sm font-semibold text-slate-700 mb-1">{UI_LABELS.topic}</label>
@@ -267,7 +328,7 @@
                                         name="topic"
                                         value={inputs.topic}
                                         onChange={handleInputChange}
-                                        placeholder="e.g. best motocross boots"
+                                        placeholder="e.g. Best Hiking Boots 2024"
                                         className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                                     />
                                 </div>
@@ -278,7 +339,7 @@
                                         name="keywords"
                                         value={inputs.keywords}
                                         onChange={handleInputChange}
-                                        placeholder="e.g. waterproof boots, helmet with MIPS, homologated"
+                                        placeholder="e.g. waterproof boots, lightweight hiking shoes, ankle support"
                                         className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all h-24 resize-none"
                                     />
                                 </div>
@@ -291,7 +352,7 @@
                                             name="audience"
                                             value={inputs.audience}
                                             onChange={handleInputChange}
-                                            placeholder="e.g. motocross riders"
+                                            placeholder="e.g. Beginners, Pro Hikers"
                                             className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none"
                                         />
                                     </div>
@@ -302,7 +363,7 @@
                                             name="competitors"
                                             value={inputs.competitors}
                                             onChange={handleInputChange}
-                                            placeholder="e.g. FOX Racing"
+                                            placeholder="e.g. REI, OutdoorGearLab"
                                             className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none"
                                         />
                                     </div>
@@ -322,22 +383,30 @@
 
                             {/* Toggles */}
                             <div className="bg-slate-50 p-4 rounded-xl space-y-3 border border-slate-100">
-                                <label className="flex items-center space-x-3 cursor-pointer">
-                                    <input type="checkbox" name="enableGEO" checked={inputs.enableGEO} onChange={handleInputChange} className="w-5 h-5 text-blue-600 rounded focus:ring-blue-500" />
-                                    <span className="text-slate-700 font-medium">{UI_LABELS.geo}</span>
-                                </label>
-                                <label className="flex items-center space-x-3 cursor-pointer">
-                                    <input type="checkbox" name="enableMeta" checked={inputs.enableMeta} onChange={handleInputChange} className="w-5 h-5 text-blue-600 rounded focus:ring-blue-500" />
-                                    <span className="text-slate-700 font-medium">{UI_LABELS.meta}</span>
-                                </label>
-                                <label className="flex items-center space-x-3 cursor-pointer">
-                                    <input type="checkbox" name="enableSerp" checked={inputs.enableSerp} onChange={handleInputChange} className="w-5 h-5 text-blue-600 rounded focus:ring-blue-500" />
-                                    <span className="text-slate-700 font-medium">{UI_LABELS.serp}</span>
-                                </label>
-                                <label className="flex items-center space-x-3 cursor-pointer">
-                                    <input type="checkbox" name="enableSchema" checked={inputs.enableSchema} onChange={handleInputChange} className="w-5 h-5 text-blue-600 rounded focus:ring-blue-500" />
-                                    <span className="text-slate-700 font-medium">{UI_LABELS.schema}</span>
-                                </label>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    <label className="flex items-center space-x-3 cursor-pointer">
+                                        <input type="checkbox" name="enableGEO" checked={inputs.enableGEO} onChange={handleInputChange} className="w-5 h-5 text-blue-600 rounded focus:ring-blue-500" />
+                                        <span className="text-slate-700 font-medium">{UI_LABELS.geo}</span>
+                                    </label>
+                                    <label className="flex items-center space-x-3 cursor-pointer">
+                                        <input type="checkbox" name="enableMeta" checked={inputs.enableMeta} onChange={handleInputChange} className="w-5 h-5 text-blue-600 rounded focus:ring-blue-500" />
+                                        <span className="text-slate-700 font-medium">{UI_LABELS.meta}</span>
+                                    </label>
+                                    <label className="flex items-center space-x-3 cursor-pointer">
+                                        <input type="checkbox" name="enableSerp" checked={inputs.enableSerp} onChange={handleInputChange} className="w-5 h-5 text-blue-600 rounded focus:ring-blue-500" />
+                                        <span className="text-slate-700 font-medium">{UI_LABELS.serp}</span>
+                                    </label>
+                                    <label className="flex items-center space-x-3 cursor-pointer">
+                                        <input type="checkbox" name="enableSchema" checked={inputs.enableSchema} onChange={handleInputChange} className="w-5 h-5 text-blue-600 rounded focus:ring-blue-500" />
+                                        <span className="text-slate-700 font-medium">{UI_LABELS.schema}</span>
+                                    </label>
+                                </div>
+                                <div className="border-t border-slate-200 pt-3 mt-1">
+                                    <label className="flex items-center space-x-3 cursor-pointer bg-white p-3 rounded-lg border border-blue-100 shadow-sm hover:border-blue-300 transition-colors">
+                                        <input type="checkbox" name="enableBlog" checked={inputs.enableBlog} onChange={handleInputChange} className="w-5 h-5 text-blue-600 rounded focus:ring-blue-500" />
+                                        <span className="text-blue-900 font-bold">{UI_LABELS.blog}</span>
+                                    </label>
+                                </div>
                             </div>
 
                         </div>
@@ -385,9 +454,9 @@
                                     <i className="fa-solid fa-lightbulb"></i>
                                 </div>
                                 <div>
-                                    <h4 className="font-bold text-blue-900 text-sm">Pro Tip for GEO</h4>
+                                    <h4 className="font-bold text-blue-900 text-sm">Pro Tip for GEO & Blogs</h4>
                                     <p className="text-blue-800 text-xs mt-1">
-                                        GEO (Generative Engine Optimization) relies on "citation authority." Fill in the <strong>{UI_LABELS.competitors}</strong> field so the AI can analyze what they are missing and help you fill those gaps.
+                                        For Blog Generation, ensuring you have <strong>LSI Keywords</strong> in the secondary keywords field helps the AI write more naturally without keyword stuffing, which is crucial for GEO ranking.
                                     </p>
                                 </div>
                              </div>
