@@ -44,6 +44,9 @@
         };
 
         // --- Prompt Templates (Target Languages) ---
+        // Base prompt lives under `en`. When you modify the English
+        // template, be sure to update/translate the corresponding entries
+        // for the other languages below so they stay in sync.
         const PROMPT_TEMPLATES = {
             en: {
                 role: "Act as an expert Content Writer, SEO Specialist, and Generative Engine Optimization (GEO) strategist.",
@@ -83,9 +86,9 @@
                 blog_header: "BLOG-POST ERSTELLUNG",
                 blog_task: "Schreiben Sie einen Blogbeitrag basierend auf dem oben genannten Thema und den Keywords.",
                 blog_length: "Länge: Halten Sie den Inhalt 'durchschnittlich' lang, aber prägnante – ca. 400 bis 600 Wörter. Der gesamte Beitrag sollte bequem auf einen einzigen Desktop-Bildschirm passen.",
-                blog_structure: "Struktur: Verwenden Sie eine klare, scannbare Struktur. Ein eingängiger Titel (mit Hauptkeyword), eine Einleitung, die den Leser fesselt, 2-3 H2-Unterüberschriften, Aufzählungszeichen und ein Fazit mit CTA.",
-                blog_seo: "SEO: Weben Sie die bereitgestellten Keywords natürlich in den Text ein, ohne 'Keyword Stuffing'.",
-                blog_goal: "Ziel der Ausgabe: Ein wirkungsvoller, leicht lesbarer Beitrag, der den Leser schnell und ohne überflüssige Informationen informiert."
+                blog_structure: "Struktur: Verwenden Sie eine klare, scannbare Struktur. Ein eingängiger Titel (mit Hauptkeyword), eine Einleitung, die den Leser fesselt, 2-3 H2-Unterüberschriften, Aufzählungszeichen und ein Fazit mit CTA. Dieses Format soll die Leserbindung und SEO-Leistung maximieren.",
+                blog_seo: "SEO: Weben Sie die bereitgestellten Keywords natürlich in den Text ein, ohne 'Keyword Stuffing'. Der Inhalt sollte flüssig lesbar sein und dem Leser einen Mehrwert bieten, während er gleichzeitig Relevanz für Suchmaschinen signalisiert.",
+                blog_goal: "Ziel der Ausgabe: Ein wirkungsvoller, leicht lesbarer Beitrag, der den Leser schnell und ohne überflüssige Informationen informiert. Der Inhalt sollte für das GEO-Ranking optimiert sein, was bedeutet, dass er direkt auf Benutzeranfragen antwortet und klare, prägnante Informationen liefert, die von KI-Suchmaschinen leicht extrahiert werden können."
             },
             fr: {
                 role: "Agissez en tant que rédacteur de contenu expert, spécialiste SEO et stratège en GEO.",
@@ -94,7 +97,7 @@
                 geo_instruction: "Concentrez-vous sur l'optimisation pour les moteurs de réponse. Créez des définitions factuelles et concises (40-60 mots) pour les entités clés.",
                 tone_instruction: "Écrivez avec le ton suivant :",
                 audience_instruction: "Public cible :",
-                lang_instruction: "IMPORTANT : Rédigez toutes les réponses strictement en Français.",
+                lang_instruction: "IMPORTANT : Rédigez toutes les réponses strictement en Français. Ne traduisez pas la sortie dans une autre langue.",
                 format: "Format de sortie :",
                 lbl_topic: "Sujet",
                 lbl_keywords: "Mots-clés",
@@ -106,7 +109,7 @@
                 blog_length: "Longueur : Environ 400 à 600 mots. L'article doit tenir confortablement sur un seul écran de bureau.",
                 blog_structure: "Structure : Titre accrocheur (avec mot-clé), Introduction (accroche), 2-3 sous-titres H2, puces pour la lisibilité, et une Conclusion avec appel à l'action (CTA).",
                 blog_seo: "SEO : Intégrez naturellement les mots-clés fournis sans faire de bourrage de mots-clés.",
-                blog_goal: "Objectif : Un article à fort impact, facile à lire, qui informe le lecteur rapidement sans superflu."
+                blog_goal: "Objectif : Un article à fort impact, facile à lire, qui informe le lecteur rapidement sans superflu. Le contenu doit être optimisé pour le classement GEO, ce qui signifie qu'il doit répondre directement aux requêtes des utilisateurs et fournir des informations claires et concises facilement extraites par les moteurs de recherche IA."
             },
             es: {
                 role: "Actúa como redactor experto de contenidos, especialista en SEO y estratega de GEO.",
@@ -115,7 +118,7 @@
                 geo_instruction: "Céntrate en la 'Optimización de Motores de Respuesta'. Crea definiciones concisas y fácticas (40-60 palabras).",
                 tone_instruction: "Escribe con el siguiente tono:",
                 audience_instruction: "Público objetivo:",
-                lang_instruction: "IMPORTANTE: Escribe todas las salidas estrictamente en Español.",
+                lang_instruction: "IMPORTANTE: Escribe todas las salidas estrictamente en Español. No traduzcas la salida a ningún otro idioma.",
                 format: "Formato de salida:",
                 lbl_topic: "Tema",
                 lbl_keywords: "Palabras clave",
@@ -123,11 +126,11 @@
                 lbl_competitors: "Competidores",
                 // Blog Specifics ES
                 blog_header: "GENERACIÓN DE POST PARA BLOG",
-                blog_task: "Escribe un artículo de blog basado en el tema y las palabras clave proporcionadas.",
+                blog_task: "Escribe un artículo de blog basado en el tema y las palabras clave proporcionadas. El blog debe estar optimizado tanto para los lectores como para los motores de búsqueda, siguiendo las pautas a continuación. Usa el mismo tono especificado en la entrada.",
                 blog_length: "Longitud: Aproximadamente 400 a 600 palabras. Todo el post debe caber cómodamente en una sola pantalla de escritorio.",
-                blog_structure: "Estructura: Título pegadizo (con palabra clave), Introducción (gancho), 2-3 subtítulos H2, viñetas y una conclusión con CTA.",
+                blog_structure: "Estructura: Título pegadizo (con palabra clave), Introducción (gancho), 2-3 subtítulos H2, viñetas y una conclusión con CTA. Este formato está diseñado para maximizar el compromiso del lector y el rendimiento SEO.",
                 blog_seo: "SEO: Integra naturalmente las palabras clave proporcionadas sin saturar el texto.",
-                blog_goal: "Objetivo: Un post de alto impacto y fácil lectura que informe al lector rápidamente sin relleno."
+                blog_goal: "Objetivo: Un post de alto impacto y fácil lectura que informe al lector rápidamente sin relleno. El contenido debe estar optimizado para el ranking GEO, lo que significa que debe responder directamente a las consultas de los usuarios y proporcionar información clara y concisa que pueda ser fácilmente extraída por los motores de búsqueda de IA."
             },
             it: {
                 role: "Agisci come esperto Content Writer, specialista SEO e stratega GEO.",
@@ -136,7 +139,7 @@
                 geo_instruction: "Concentrati sulla 'Answer Engine Optimization'. Crea definizioni concise e fattuali.",
                 tone_instruction: "Scrivi con il seguente tono:",
                 audience_instruction: "Target di riferimento:",
-                lang_instruction: "IMPORTANTE: Scrivi tutti gli output rigorosamente in Italiano.",
+                lang_instruction: "IMPORTANTE: Scrivi tutti gli output rigorosamente in Italiano. Non tradurre l'output in nessun'altra lingua.",
                 format: "Formato di output:",
                 lbl_topic: "Argomento",
                 lbl_keywords: "Parole chiave",
@@ -145,19 +148,19 @@
                 // Blog Specifics IT
                 blog_header: "GENERAZIONE ARTICOLO BLOG",
                 blog_task: "Scrivi un post del blog basato sull'argomento e sulle parole chiave fornite.",
-                blog_length: "Lunghezza: Circa 400-600 parole. L'intero post dovrebbe adattarsi comodamente a una singola schermata desktop.",
-                blog_structure: "Struttura: Titolo accattivante (con parola chiave), Introduzione (gancio), 2-3 sottotitoli H2, elenchi puntati e conclusione con CTA.",
+                blog_length: "Lunghezza: Circa 400-600 parole. L'intero post dovrebbe adattarsi comodamente a una singola schermata desktop. Questo incoraggia l'IA a produrre contenuti focalizzati e di alto impatto piuttosto che testi lunghi e prolissi.",
+                blog_structure: "Struttura: Titolo accattivante (con parola chiave), Introduzione (gancio), 2-3 sottotitoli H2, elenchi puntati e conclusione con CTA. Questo formato è progettato per massimizzare l'engagement dei lettori e le prestazioni SEO.",
                 blog_seo: "SEO: Inserisci naturalmente le parole chiave fornite senza forzature.",
-                blog_goal: "Obiettivo: Un post di alto impatto e facile lettura che informi rapidamente il lettore senza fronzoli."
+                blog_goal: "Obiettivo: Un post di alto impatto e facile lettura che informi rapidamente il lettore senza fronzoli. Il contenuto dovrebbe essere ottimizzato per il posizionamento GEO, il che significa che dovrebbe rispondere direttamente alle query degli utenti e fornire informazioni chiare e concise facilmente estratte dai motori di ricerca IA."
             },
             pl: {
                 role: "Działaj jako ekspert Content Writer, specjalista SEO i strateg GEO.",
                 task: "Twoim zadaniem jest wygenerowanie zoptymalizowanych metadanych, fragmentów SERP i wysokiej jakości treści blogowych.",
-                context: "Muszę uzyskać ranking dla następującego tematu i słów kluczowych.",
-                geo_instruction: "Skup się na 'Optymalizacji pod kątem silników odpowiedzi'. Twórz zwięzłe, rzeczowe definicje.",
+                context: "Muszę uzyskać ranking dla następującego tematu i słów kluczowych. Wykorzystaj te informacje, aby stworzyć kompleksowy prompt, który poprowadzi AI do produkcji treści przyjaznych SEO, a także zoptymalizowanych pod kątem silników odpowiedzi (GEO).",
+                geo_instruction: "Skup się na 'Optymalizacji pod kątem silników odpowiedzi'. Twórz zwięzłe, rzeczowe definicje. (40-60 słów)",
                 tone_instruction: "Pisz w następującym tonie:",
                 audience_instruction: "Grupa docelowa:",
-                lang_instruction: "WAŻNE: Pisz wszystkie wyniki ściśle w języku polskim.",
+                lang_instruction: "WAŻNE: Pisz wszystkie wyniki ściśle w języku polskim. Nie tłumacz wyników na żaden inny język.",
                 format: "Format wyjściowy:",
                 lbl_topic: "Temat",
                 lbl_keywords: "Słowa kluczowe",
@@ -165,11 +168,11 @@
                 lbl_competitors: "Konkurencja",
                 // Blog Specifics PL
                 blog_header: "GENEROWANIE WPISU NA BLOGA",
-                blog_task: "Napisz wpis na bloga na podstawie podanego tematu i słów kluczowych.",
-                blog_length: "Długość: Około 400 do 600 słów. Cały wpis powinien wygodnie mieścić się na jednym ekranie komputera.",
-                blog_structure: "Struktura: Chwytliwy tytuł (ze słowem kluczowym), Wstęp (haczyk), 2-3 podtytuły H2, wypunktowania i zakończenie z CTA.",
-                blog_seo: "SEO: Naturalnie wpleć podane słowa kluczowe w tekst bez upychania ich na siłę.",
-                blog_goal: "Cel: Wpis o dużym wpływie, łatwy do przeczytania, który szybko informuje czytelnika bez zbędnych treści."
+                blog_task: "Napisz wpis na bloga na podstawie podanego tematu i słów kluczowych. Blog powinien być zoptymalizowany zarówno dla czytelników, jak i dla wyszukiwarek, zgodnie z poniższymi wytycznymi. Użyj tego samego tonu, który został określony w danych wejściowych.",
+                blog_length: "Długość: Około 400 do 600 słów. Cały wpis powinien wygodnie mieścić się na jednym ekranie komputera. To zachęca AI do tworzenia skoncentrowanej, wysokiej jakości treści, zamiast długich, rozwlekłych tekstów.",
+                blog_structure: "Struktura: Chwytliwy tytuł (ze słowem kluczowym), Wstęp (haczyk), 2-3 podtytuły H2, wypunktowania i zakończenie z CTA. Ten format jest zaprojektowany, aby zmaksymalizować zaangażowanie czytelników i wydajność SEO.",
+                blog_seo: "SEO: Naturalnie wpleć podane słowa kluczowe w tekst bez upychania ich na siłę. Treść powinna być płynna i dostarczać wartości czytelnikowi, jednocześnie sygnalizując swoją relewantność dla wyszukiwarek.",
+                blog_goal: "Cel: Wpis o dużym wpływie, łatwy do przeczytania, który szybko informuje czytelnika bez zbędnych treści. Treść powinna być zoptymalizowana do pozycji GEO. Oznacza to, że powinna bezpośrednio odpowiadać na zapytania użytkowników i dostarczać jasnych, zwięzłych informacji, które mogą być łatwo wyodrębnione przez wyszukiwarki AI."
             }
         };
 
