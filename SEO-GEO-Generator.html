@@ -37,6 +37,11 @@
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
 
+        const removeEmojis = (str) => {
+            if (!str) return str;
+            return str.replace(/\p{Emoji_Presentation}/gu, '');
+        };
+
         // --- UI Labels (Always English for the Interface) ---
         const UI_LABELS = {
             topic: "Topic / Main Keyword",
