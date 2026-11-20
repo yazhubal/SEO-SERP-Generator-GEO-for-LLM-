@@ -76,6 +76,14 @@
                 lbl_keywords: "Keywords",
                 lbl_audience: "Audience",
                 lbl_competitors: "Competitors",
+                framework_label: "Writing Framework",
+                frameworks: {
+                    AIDA: { stages: [["A", "Attention"], ["I", "Interest"], ["D", "Desire"], ["A", "Action"]], fit: "For clear, persuasive product or service content.", instruction: "Shape the article to capture attention, build interest, develop desire, and guide the reader toward a relevant action. Apply this flow naturally; do not name the framework or label its stages in the article." },
+                    PAS: { stages: [["P", "Problem"], ["A", "Agitate"], ["S", "Solution"]], fit: "For readers actively looking for a fix to a specific problem.", instruction: "Shape the article by identifying the reader's problem, explaining its impact with empathy, and presenting a relevant solution. Apply this flow naturally; do not name the framework or label its stages in the article." },
+                    BAB: { stages: [["B", "Before"], ["A", "After"], ["B", "Bridge"]], fit: "For showing a practical path from a current challenge to a better outcome.", instruction: "Show the reader's current situation, a realistic improved outcome, and how the product or topic can bridge the gap. Apply this flow naturally; do not name the framework or label its stages in the article." },
+                    AIDAR: { stages: [["A", "Attention"], ["I", "Interest"], ["D", "Desire"], ["A", "Action"], ["R", "Retention"]], fit: "For content that should encourage continued use and a lasting customer relationship.", instruction: "Capture attention, build interest and desire, guide the reader toward a relevant action, and include a useful reason to continue engaging or using the product. Apply this flow naturally; do not name the framework or label its stages in the article." },
+                    FAB: { stages: [["F", "Features"], ["A", "Advantages"], ["B", "Benefits"]], fit: "For explaining product details in terms of real customer value.", instruction: "Connect verified product features to their practical advantages and explain the resulting value to the reader. Apply this flow naturally; do not name the framework or label its stages in the article." }
+                },
                 // New Blog Specifics
                 blog_header: "BLOG POST GENERATION",
                 blog_task: "Write a blog post based on the topic and keywords provided above. The article must inform readers, prove its claims, and help the customer make a confident purchase or usage decision.",
@@ -109,6 +117,14 @@
                 lbl_keywords: "Keywords",
                 lbl_audience: "Zielgruppe",
                 lbl_competitors: "Wettbewerber",
+                framework_label: "Schreibmethode",
+                frameworks: {
+                    AIDA: { stages: [["A", "Aufmerksamkeit"], ["I", "Interesse"], ["D", "Wunsch"], ["A", "Handlung"]], fit: "Für überzeugende Produkt- oder Dienstleistungstexte.", instruction: "Führen Sie vom ersten Interesse über einen nachvollziehbaren Wunsch zu einer passenden Handlung. Wenden Sie diesen Ablauf natürlich an, ohne die Methode oder ihre Phasen im Artikel zu benennen oder als Überschriften zu verwenden." },
+                    PAS: { stages: [["P", "Problem"], ["A", "Problem verstärken"], ["S", "Lösung"]], fit: "Für Leser, die gezielt nach einer Lösung für ein konkretes Problem suchen.", instruction: "Benennen Sie das Problem der Leser, erklären Sie einfühlsam seine Auswirkungen und stellen Sie eine passende Lösung vor. Wenden Sie diesen Ablauf natürlich an, ohne die Methode oder ihre Phasen im Artikel zu benennen oder als Überschriften zu verwenden." },
+                    BAB: { stages: [["B", "Vorher"], ["A", "Nachher"], ["B", "Weg dorthin"]], fit: "Um einen konkreten Weg von einer Herausforderung zu einem besseren Ergebnis zu zeigen.", instruction: "Beschreiben Sie die aktuelle Situation der Leser, ein realistisches besseres Ergebnis und wie das Produkt oder Thema die Veränderung ermöglichen kann. Wenden Sie diesen Ablauf natürlich an, ohne die Methode oder ihre Phasen im Artikel zu benennen oder als Überschriften zu verwenden." },
+                    AIDAR: { stages: [["A", "Aufmerksamkeit"], ["I", "Interesse"], ["D", "Wunsch"], ["A", "Handlung"], ["R", "Bindung"]], fit: "Für Inhalte, die langfristige Nutzung und Kundenbindung fördern sollen.", instruction: "Wecken Sie Aufmerksamkeit und Interesse, stärken Sie den Wunsch, führen Sie zu einer passenden Handlung und geben Sie einen hilfreichen Grund für die weitere Nutzung oder Beschäftigung mit dem Produkt. Wenden Sie diesen Ablauf natürlich an, ohne die Methode oder ihre Phasen im Artikel zu benennen oder als Überschriften zu verwenden." },
+                    FAB: { stages: [["F", "Merkmale"], ["A", "Vorteile"], ["B", "Kundennutzen"]], fit: "Um Produktmerkmale mit konkretem Kundennutzen zu verbinden.", instruction: "Verbinden Sie verifizierte Produktmerkmale mit ihren praktischen Vorteilen und erklären Sie den daraus entstehenden Nutzen für die Leser. Wenden Sie diesen Ablauf natürlich an, ohne die Methode oder ihre Phasen im Artikel zu benennen oder als Überschriften zu verwenden." }
+                },
                 // Blog Specifics DE
                 blog_header: "BLOG-POST ERSTELLUNG",
                 blog_task: "Schreiben Sie einen Blogbeitrag zum oben genannten Thema und zu den Keywords. Der Artikel muss informieren, Behauptungen belegen und dem Kunden eine sichere Kauf- oder Nutzungsentscheidung ermöglichen.",
@@ -138,6 +154,14 @@
                 lbl_keywords: "Mots-clés",
                 lbl_audience: "Public",
                 lbl_competitors: "Concurrents",
+                framework_label: "Structure rédactionnelle",
+                frameworks: {
+                    AIDA: { stages: [["A", "Attention"], ["I", "Intérêt"], ["D", "Désir"], ["A", "Action"]], fit: "Pour des contenus produit ou service clairs et convaincants.", instruction: "Captez l'attention, développez l'intérêt et le désir, puis guidez le lecteur vers une action pertinente. Suivez ce fil naturellement, sans nommer la méthode ni ses étapes dans l'article." },
+                    PAS: { stages: [["P", "Problème"], ["A", "Aggraver"], ["S", "Solution"]], fit: "Pour les lecteurs qui recherchent activement une solution à un problème précis.", instruction: "Identifiez le problème du lecteur, expliquez ses conséquences avec empathie, puis présentez une solution adaptée. Suivez ce fil naturellement, sans nommer la méthode ni ses étapes dans l'article." },
+                    BAB: { stages: [["B", "Avant"], ["A", "Après"], ["B", "Passerelle"]], fit: "Pour montrer un chemin concret entre une difficulté actuelle et un meilleur résultat.", instruction: "Présentez la situation actuelle du lecteur, une amélioration réaliste et la manière dont le produit ou le sujet peut faire le lien entre les deux. Suivez ce fil naturellement, sans nommer la méthode ni ses étapes dans l'article." },
+                    AIDAR: { stages: [["A", "Attention"], ["I", "Intérêt"], ["D", "Désir"], ["A", "Action"], ["R", "Fidélisation"]], fit: "Pour encourager l'utilisation dans la durée et une relation durable avec le client.", instruction: "Captez l'attention, développez l'intérêt et le désir, guidez vers une action pertinente et donnez une raison utile de poursuivre l'utilisation ou l'engagement. Suivez ce fil naturellement, sans nommer la méthode ni ses étapes dans l'article." },
+                    FAB: { stages: [["F", "Fonctionnalités"], ["A", "Avantages"], ["B", "Bénéfices"]], fit: "Pour relier les caractéristiques du produit à la valeur concrète pour le client.", instruction: "Reliez les caractéristiques vérifiées du produit à leurs avantages pratiques et expliquez la valeur qui en découle pour le lecteur. Suivez ce fil naturellement, sans nommer la méthode ni ses étapes dans l'article." }
+                },
                 // Blog Specifics FR
                 blog_header: "GÉNÉRATION D'ARTICLE DE BLOG",
                 blog_task: "Rédigez un article de blog basé sur le sujet et les mots-clés fournis. L'article doit informer les lecteurs, prouver ses affirmations et aider le client à prendre une décision d'achat ou d'utilisation en toute confiance.",
@@ -171,6 +195,14 @@
                 lbl_keywords: "Palabras clave",
                 lbl_audience: "Audiencia",
                 lbl_competitors: "Competidores",
+                framework_label: "Estructura de redacción",
+                frameworks: {
+                    AIDA: { stages: [["A", "Atención"], ["I", "Interés"], ["D", "Deseo"], ["A", "Acción"]], fit: "Para contenido claro y persuasivo sobre productos o servicios.", instruction: "Capte la atención, despierte el interés y el deseo, y guíe al lector hacia una acción relevante. Aplique este recorrido con naturalidad, sin nombrar el método ni sus etapas en el artículo." },
+                    PAS: { stages: [["P", "Problema"], ["A", "Agitación"], ["S", "Solución"]], fit: "Para lectores que buscan activamente resolver un problema concreto.", instruction: "Identifique el problema del lector, explique con empatía sus consecuencias y presente una solución adecuada. Aplique este recorrido con naturalidad, sin nombrar el método ni sus etapas en el artículo." },
+                    BAB: { stages: [["B", "Antes"], ["A", "Después"], ["B", "Puente"]], fit: "Para mostrar un camino práctico desde una dificultad actual hasta un mejor resultado.", instruction: "Describa la situación actual del lector, un resultado mejor y realista, y cómo el producto o tema puede conectar ambos. Aplique este recorrido con naturalidad, sin nombrar el método ni sus etapas en el artículo." },
+                    AIDAR: { stages: [["A", "Atención"], ["I", "Interés"], ["D", "Deseo"], ["A", "Acción"], ["R", "Retención"]], fit: "Para fomentar el uso continuado y una relación duradera con el cliente.", instruction: "Capte la atención, desarrolle el interés y el deseo, guíe hacia una acción relevante e incluya un motivo útil para seguir usando o consultando el producto. Aplique este recorrido con naturalidad, sin nombrar el método ni sus etapas en el artículo." },
+                    FAB: { stages: [["F", "Características"], ["A", "Ventajas"], ["B", "Beneficios"]], fit: "Para relacionar los detalles del producto con el valor real para el cliente.", instruction: "Relacione las características verificadas del producto con sus ventajas prácticas y explique el valor resultante para el lector. Aplique este recorrido con naturalidad, sin nombrar el método ni sus etapas en el artículo." }
+                },
                 // Blog Specifics ES
                 blog_header: "GENERACIÓN DE POST PARA BLOG",
                 blog_task: "Escribe un artículo de blog basado en el tema y las palabras clave proporcionadas. El artículo debe informar a los lectores, demostrar sus afirmaciones y ayudar al cliente a tomar una decisión segura de compra o uso.",
@@ -204,6 +236,14 @@
                 lbl_keywords: "Parole chiave",
                 lbl_audience: "Target",
                 lbl_competitors: "Concorrenti",
+                framework_label: "Struttura di scrittura",
+                frameworks: {
+                    AIDA: { stages: [["A", "Attenzione"], ["I", "Interesse"], ["D", "Desiderio"], ["A", "Azione"]], fit: "Per contenuti chiari e persuasivi su prodotti o servizi.", instruction: "Cattura l'attenzione, sviluppa interesse e desiderio e guida il lettore verso un'azione pertinente. Segui questo percorso in modo naturale, senza nominare il metodo o le sue fasi nell'articolo." },
+                    PAS: { stages: [["P", "Problema"], ["A", "Agitazione"], ["S", "Soluzione"]], fit: "Per lettori che cercano attivamente una soluzione a un problema specifico.", instruction: "Individua il problema del lettore, spiegane con empatia le conseguenze e presenta una soluzione pertinente. Segui questo percorso in modo naturale, senza nominare il metodo o le sue fasi nell'articolo." },
+                    BAB: { stages: [["B", "Prima"], ["A", "Dopo"], ["B", "Percorso"]], fit: "Per mostrare un percorso concreto da una difficoltà attuale a un risultato migliore.", instruction: "Descrivi la situazione attuale del lettore, un miglioramento realistico e come il prodotto o l'argomento può collegare i due. Segui questo percorso in modo naturale, senza nominare il metodo o le sue fasi nell'articolo." },
+                    AIDAR: { stages: [["A", "Attenzione"], ["I", "Interesse"], ["D", "Desiderio"], ["A", "Azione"], ["R", "Fidelizzazione"]], fit: "Per favorire l'uso continuativo e un rapporto duraturo con il cliente.", instruction: "Cattura l'attenzione, sviluppa interesse e desiderio, guida verso un'azione pertinente e offri un motivo utile per continuare a usare o approfondire il prodotto. Segui questo percorso in modo naturale, senza nominare il metodo o le sue fasi nell'articolo." },
+                    FAB: { stages: [["F", "Caratteristiche"], ["A", "Vantaggi"], ["B", "Benefici"]], fit: "Per collegare le caratteristiche del prodotto al valore concreto per il cliente.", instruction: "Collega le caratteristiche verificate del prodotto ai vantaggi pratici e spiega il valore che ne deriva per il lettore. Segui questo percorso in modo naturale, senza nominare il metodo o le sue fasi nell'articolo." }
+                },
                 // Blog Specifics IT
                 blog_header: "GENERAZIONE ARTICOLO BLOG",
                 blog_task: "Scrivi un articolo di blog basato sull'argomento e sulle parole chiave fornite. L'articolo deve informare i lettori, dimostrare le affermazioni e aiutare il cliente a prendere una decisione sicura di acquisto o utilizzo.",
@@ -237,6 +277,14 @@
                 lbl_keywords: "Słowa kluczowe",
                 lbl_audience: "Odbiorcy",
                 lbl_competitors: "Konkurencja",
+                framework_label: "Schemat pisania",
+                frameworks: {
+                    AIDA: { stages: [["A", "Uwaga"], ["I", "Zainteresowanie"], ["D", "Pragnienie"], ["A", "Działanie"]], fit: "Do jasnych i przekonujących treści o produktach lub usługach.", instruction: "Przyciągnij uwagę, wzbudź zainteresowanie i chęć, a następnie skieruj czytelnika ku odpowiedniemu działaniu. Zastosuj ten tok naturalnie, nie nazywając metody ani jej etapów w artykule." },
+                    PAS: { stages: [["P", "Problem"], ["A", "Pogłębienie problemu"], ["S", "Rozwiązanie"]], fit: "Dla czytelników aktywnie szukających rozwiązania konkretnego problemu.", instruction: "Wskaż problem czytelnika, empatycznie wyjaśnij jego skutki, a następnie przedstaw odpowiednie rozwiązanie. Zastosuj ten tok naturalnie, nie nazywając metody ani jej etapów w artykule." },
+                    BAB: { stages: [["B", "Przed"], ["A", "Po"], ["B", "Droga do zmiany"]], fit: "Aby pokazać praktyczną drogę od obecnego wyzwania do lepszego rezultatu.", instruction: "Opisz obecną sytuację czytelnika, realistyczny lepszy rezultat oraz to, jak produkt lub temat może połączyć oba stany. Zastosuj ten tok naturalnie, nie nazywając metody ani jej etapów w artykule." },
+                    AIDAR: { stages: [["A", "Uwaga"], ["I", "Zainteresowanie"], ["D", "Pragnienie"], ["A", "Działanie"], ["R", "Utrzymanie relacji"]], fit: "Do treści wspierających dalsze korzystanie i trwałą relację z klientem.", instruction: "Przyciągnij uwagę, rozbudź zainteresowanie i chęć, skieruj czytelnika ku odpowiedniemu działaniu oraz podaj użyteczny powód do dalszego korzystania lub zaangażowania. Zastosuj ten tok naturalnie, nie nazywając metody ani jej etapów w artykule." },
+                    FAB: { stages: [["F", "Cechy"], ["A", "Zalety"] , ["B", "Korzyści"]], fit: "Aby przełożyć cechy produktu na konkretną wartość dla klienta.", instruction: "Połącz zweryfikowane cechy produktu z ich praktycznymi zaletami i wyjaśnij wynikającą z nich wartość dla czytelnika. Zastosuj ten tok naturalnie, nie nazywając metody ani jej etapów w artykule." }
+                },
                 // Blog Specifics PL
                 blog_header: "GENEROWANIE WPISU NA BLOGA",
                 blog_task: "Napisz wpis na blogu na podstawie podanego tematu i słów kluczowych. Artykuł musi informować czytelników, potwierdzać swoje twierdzenia i pomagać klientowi podjąć pewną decyzję zakupową lub użytkową.",
@@ -261,6 +309,7 @@
 
         const App = () => {
             const [outputLang, setOutputLang] = useState('en');
+            const [selectedFramework, setSelectedFramework] = useState('AIDA');
             const [inputs, setInputs] = useState({
                 topic: '',
                 keywords: '',
@@ -289,7 +338,7 @@
             // Update Prompt whenever inputs or language change
             useEffect(() => {
                 buildPrompt();
-            }, [inputs, outputLang]);
+            }, [inputs, outputLang, selectedFramework]);
 
             const handleInputChange = (e) => {
                 const { name, value, type, checked } = e.target;
@@ -358,6 +407,7 @@
                     promptParts.push(`**Constraints & Formatting:**`);
                     promptParts.push(`- ${tmpl.blog_length}`);
                     promptParts.push(`- ${tmpl.blog_structure}`);
+                    promptParts.push(`- ${tmpl.frameworks[selectedFramework].instruction}`);
                     promptParts.push(`- ${tmpl.blog_seo}`);
                     promptParts.push(`- ${tmpl.tone_instruction} ${tone}`);
                     promptParts.push(`- ${tmpl.blog_goal}`);
@@ -381,6 +431,8 @@
                 setCopySuccess(true);
                 setTimeout(() => setCopySuccess(false), 2000);
             };
+
+            const currentFramework = PROMPT_TEMPLATES[outputLang].frameworks[selectedFramework];
 
             return (
                 <div className="min-h-screen p-4 md:p-8 flex flex-col items-center justify-center relative bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
@@ -484,6 +536,30 @@
                                         className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 outline-none"
                                     />
                                 </div>
+
+                                <div>
+                                    <label htmlFor="writingFramework" className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-1">{PROMPT_TEMPLATES[outputLang].framework_label}</label>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 items-start">
+                                        <select
+                                            id="writingFramework"
+                                            value={selectedFramework}
+                                            onChange={(e) => setSelectedFramework(e.target.value)}
+                                            className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 outline-none"
+                                        >
+                                            {['AIDA', 'PAS', 'BAB', 'AIDAR', 'FAB'].map((framework) => (
+                                                <option key={framework} value={framework}>{framework}</option>
+                                            ))}
+                                        </select>
+                                        <div className="min-h-[72px] rounded-lg border border-gray-200 dark:border-gray-600 bg-white/70 dark:bg-gray-700/70 p-3">
+                                            <div className="flex flex-wrap gap-x-3 gap-y-1 text-sm text-slate-700 dark:text-slate-200">
+                                                {currentFramework.stages.map(([letter, stage], index) => (
+                                                    <span key={`${letter}-${index}`}><strong className="text-blue-700 dark:text-blue-300">{letter}</strong> {stage}</span>
+                                                ))}
+                                            </div>
+                                            <p className="mt-1 text-xs leading-relaxed text-slate-500 dark:text-slate-400">{currentFramework.fit}</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                             {/* Toggles */}
@@ -521,35 +597,33 @@
                              <div className="glass-panel rounded-2xl shadow-xl p-1 flex-grow flex flex-col relative overflow-hidden h-[600px] lg:h-auto">
                                 <div className="absolute top-0 left-0 right-0 bg-gradient-to-b from-white via-white to-transparent dark:from-gray-800 dark:via-gray-800 p-4 z-10 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center">
                                     <span className="text-xs font-bold tracking-wider text-slate-400 dark:text-slate-500 uppercase">Generated Prompt Preview</span>
-                                    <div className="flex items-center gap-2">
-                                        <div className={`w-2 h-2 rounded-full ${inputs.topic ? 'bg-green-500' : 'bg-orange-400 animate-pulse'}`}></div>
-                                        <span className="text-xs text-slate-400 dark:text-slate-500">{inputs.topic ? 'Ready to copy' : 'Waiting for input...'}</span>
+                                    <div className="flex items-center gap-3">
+                                        <div className="flex items-center gap-2">
+                                            <div className={`w-2 h-2 rounded-full ${inputs.topic ? 'bg-green-500' : 'bg-orange-400 animate-pulse'}`}></div>
+                                            <span className="text-xs text-slate-400 dark:text-slate-500">{inputs.topic ? 'Ready to copy' : 'Waiting for input...'}</span>
+                                        </div>
+                                        <button
+                                            onClick={copyToClipboard}
+                                            className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-bold text-white transition-colors shadow ${
+                                                copySuccess ? 'bg-green-500 hover:bg-green-600' : 'bg-blue-600 hover:bg-blue-700'
+                                            }`}
+                                        >
+                                            {copySuccess ? (
+                                                <>
+                                                    <i className="fa-solid fa-check"></i>
+                                                    Copied!
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <i className="fa-regular fa-copy"></i>
+                                                    {UI_LABELS.copy}
+                                                </>
+                                            )}
+                                        </button>
                                     </div>
                                 </div>
                                 <div className="flex-grow overflow-auto p-6 pt-16 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-300 font-mono text-sm leading-relaxed whitespace-pre-wrap">
                                     {generatedPrompt}
-                                </div>
-                                <div className="p-4 bg-white dark:bg-gray-800 border-t border-gray-100 dark:border-gray-700 flex justify-end">
-                                    <button 
-                                        onClick={copyToClipboard}
-                                        className={`flex items-center gap-2 px-6 py-3 rounded-lg font-bold text-white transition-all shadow-lg ${
-                                            copySuccess 
-                                            ? 'bg-green-500 hover:bg-green-600 translate-y-0' 
-                                            : 'bg-blue-600 hover:bg-blue-700 hover:-translate-y-1'
-                                        }`}
-                                    >
-                                        {copySuccess ? (
-                                            <>
-                                                <i className="fa-solid fa-check"></i>
-                                                Copied!
-                                            </>
-                                        ) : (
-                                            <>
-                                                <i className="fa-regular fa-copy"></i>
-                                                {UI_LABELS.copy}
-                                            </>
-                                        )}
-                                    </button>
                                 </div>
                              </div>
                              
