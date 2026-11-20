@@ -78,11 +78,22 @@
                 lbl_competitors: "Competitors",
                 // New Blog Specifics
                 blog_header: "BLOG POST GENERATION",
-                blog_task: "Write a blog post based on the topic and keywords provided above. The blog should be optimized for both readers and search engines, following the guidelines below. Use the same tone as specified in the input.",
-                blog_length: "Length: Keep the content 'average' but concise—approximately 400 to 600 words. The entire post should fit comfortably on a single desktop screen without requiring excessive scrolling. This encourages the AI to produce focused, high-impact content rather than lengthy, meandering text.",
-                blog_structure: "Structure: Use a clear, scannable structure. Include a Catchy Title (with main keyword), an Introduction that hooks the reader, 2-3 H2 subheaders, bullet points to reduce visual clutter, and a Conclusion with a CTA. This format is designed to maximize reader engagement and SEO performance.",
-                blog_seo: "SEO: Naturally weave the provided keywords into the text without 'keyword stuffing'. The content should read smoothly and provide value to the reader while also signaling relevance to search engines.",
-                blog_goal: "Output Goal: A high-impact, easy-to-read post that informs the reader quickly without fluff. The content should be optimized for GEO ranking, meaning it should directly answer user queries and provide clear, concise information that can be easily extracted by AI search engines."
+                blog_task: "Write a blog post based on the topic and keywords provided above. The article must inform readers, prove its claims, and help the customer make a confident purchase or usage decision.",
+                blog_length: "Length: Approximately 400 to 600 words, with enough depth to explain the topic clearly.",
+                blog_structure: "Article structure:\n- First, write a first paragraph that introduces the brand or product topic and states why it matters.\n- In the next chapter, use the AIDA method (Attention, Interest, Desire, Action) to explain why the reader will need the product or topic and how it solves a real problem.\n- After the AIDA chapter, continue with concise supporting chapters on specifications, applications, comparisons, or expert guidance when relevant.\n- Close the article with a dedicated Benefits for the Customer section that clearly summarizes the customer's practical, financial, safety, comfort, or performance benefits.",
+                blog_seo: "SEO: Naturally weave the provided keywords into the text. Do not use keyword stuffing, unsupported claims, or invented specifications.",
+                blog_goal: "Output Goal: A high-impact, authoritative article that answers the reader's questions directly and is easy for AI answer engines to extract.",
+                blog_research: "Mandatory online fact-checking: Verify all brands, product data, specifications, compatibility, features, certifications, pricing information, and relevant professional knowledge. Start with the official vendor or manufacturer's pages, then confirm and extend the facts with at least 2-3 independent reputable internet sources, such as technical documentation, recognized trade publications, or manufacturer distributors. For every factual statement, prefer primary sources and report only information that is verifiable. Cross-check conflicting details and state uncertainty rather than inventing facts. Do not present marketing language as proof without independent or technical support.",
+                blog_citations: "Sources: Add a short 'Sources' section with the exact page titles and URLs used. Distinguish official vendor sources from independent sources. Do not cite search-engine result pages or unsupported forums as evidence.",
+                geo_bullets: [
+                    "Ensure the content is structured with clear H2/H3 questions that mimic user queries.",
+                    "Prioritize a direct answer in the first sentence of each section.",
+                    "Cite credible sources or statistics where possible to increase authority."
+                ],
+                meta_task: "Generate 3 variations of Page Titles (maximum 60 characters) and Meta Descriptions (maximum 155 characters). Make them click-worthy, keyword-rich, and accurate.",
+                serp_task: "Write a 40-50 word paragraph specifically designed to win a Featured Snippet (Position Zero) for the main keyword.",
+                schema_task: "Provide valid JSON-LD code for 'Article' or 'FAQPage' schema relevant to this topic.",
+                code_export: "Format every separate deliverable—meta data, SERP text, schema, article, and sources—inside a clearly labeled Markdown code block. Place JSON-LD in a ```json block. Place the blog article in a ```markdown block. Place any plain-text variations in individual ```text blocks. Do not place additional explanations inside the code blocks; keep them after or before the block."
             },
             de: {
                 role: "Handeln Sie als erfahrener Content-Autor, SEO-Spezialist und Stratege für Generative Engine Optimization (GEO).",
@@ -99,11 +110,18 @@
                 lbl_competitors: "Wettbewerber",
                 // Blog Specifics DE
                 blog_header: "BLOG-POST ERSTELLUNG",
-                blog_task: "Schreiben Sie einen Blogbeitrag basierend auf dem oben genannten Thema und den Keywords.",
-                blog_length: "Länge: Halten Sie den Inhalt 'durchschnittlich' lang, aber prägnante – ca. 400 bis 600 Wörter. Der gesamte Beitrag sollte bequem auf einen einzigen Desktop-Bildschirm passen.",
-                blog_structure: "Struktur: Verwenden Sie eine klare, scannbare Struktur. Ein eingängiger Titel (mit Hauptkeyword), eine Einleitung, die den Leser fesselt, 2-3 H2-Unterüberschriften, Aufzählungszeichen und ein Fazit mit CTA. Dieses Format soll die Leserbindung und SEO-Leistung maximieren.",
-                blog_seo: "SEO: Weben Sie die bereitgestellten Keywords natürlich in den Text ein, ohne 'Keyword Stuffing'. Der Inhalt sollte flüssig lesbar sein und dem Leser einen Mehrwert bieten, während er gleichzeitig Relevanz für Suchmaschinen signalisiert.",
-                blog_goal: "Ziel der Ausgabe: Ein wirkungsvoller, leicht lesbarer Beitrag, der den Leser schnell und ohne überflüssige Informationen informiert. Der Inhalt sollte für das GEO-Ranking optimiert sein, was bedeutet, dass er direkt auf Benutzeranfragen antwortet und klare, prägnante Informationen liefert, die von KI-Suchmaschinen leicht extrahiert werden können."
+                blog_task: "Schreiben Sie einen Blogbeitrag zum oben genannten Thema und zu den Keywords. Der Artikel muss informieren, Behauptungen belegen und dem Kunden eine sichere Kauf- oder Nutzungsentscheidung ermöglichen.",
+                blog_length: "Länge: ungefähr 400 bis 600 Wörter, mit ausreichend Tiefe für eine klare Erklärung.",
+                blog_structure: "Artikelstruktur:\n- Beginnen Sie den Artikel mit einem ersten Absatz, der die Marke oder das Produkt vorstellt und erklärt, warum das Thema relevant ist.\n- Im nächsten Kapitel erklären Sie mit der AIDA-Methode (Attention, Interest, Desire, Action), warum der Leser das Produkt bzw. Thema braucht und wie es ein reales Problem löst.\n- Ergänzen Sie danach nur relevante Kapitel zu technischen Daten, Einsatzmöglichkeiten, Vergleichen oder Fachwissen.\n- Beenden Sie den Artikel mit einem eigenen Kapitel 'Nutzen für den Kunden', das praktische, wirtschaftliche, sicherheitsbezogene, Komfort- oder Leistungsvorteile klar zusammenfasst.",
+                blog_seo: "SEO: Verwenden Sie die vorgegebenen Keywords natürlich. Vermeiden Sie Keyword-Stuffing, nicht belegbare Behauptungen und erfundene technische Daten.",
+                blog_goal: "Ziel: Ein wirkungsvoller, fachlich fundierter Artikel, der Fragen direkt beantwortet und von KI-Suchmaschinen leicht ausgewertet werden kann.",
+                blog_research: "Pflicht zur Online-Faktenprüfung: Prüfen Sie Marken, Produktdaten, technische Spezifikationen, Kompatibilität, Funktionen, Zertifizierungen, Preise und relevantes Fachwissen. Beginnen Sie mit den offiziellen Seiten des Herstellers oder Anbieters; bestätigen und ergänzen Sie die Angaben anschließend mit mindestens 2-3 unabhängigen seriösen Internetquellen, etwa technischen Dokumentationen, Fachmedien oder autorisierten Händlern. Bevorzugen Sie Primärquellen und veröffentlichen Sie nur überprüfbare Informationen. Widersprüchliche Angaben prüfen Sie, Unsicherheiten werden transparent benannt statt erfunden.",
+                blog_citations: "Quellen: Fügen Sie einen kurzen Abschnitt 'Quellen' mit exakten Seitentiteln und URLs hinzu. Unterscheiden Sie zwischen offiziellen Anbieterquellen und unabhängigen Quellen. Verwenden Sie keine Suchergebnisseiten oder unbestätigten Foren als Belege.",
+                geo_bullets: ["Strukturieren Sie Inhalte mit klaren H2/H3-Fragen für typische Nutzersuchanfragen.", "Beantworten Sie jede zentrale Frage direkt im ersten Satz der jeweiligen Abschnitte.", "Verwenden Sie glaubwürdige Quellen oder Statistiken, um die Autorität zu erhöhen."],
+                meta_task: "Erstellen Sie 3 Varianten für Seitentitel (maximal 60 Zeichen) und Meta-Beschreibungen (maximal 155 Zeichen). Sie sollen überzeugend, keyword-relevant und sachlich korrekt sein.",
+                serp_task: "Schreiben Sie einen Absatz mit 40-50 Worten, der gezielt darauf ausgelegt ist, das Featured Snippet (Position Zero) für das Hauptkeyword zu gewinnen.",
+                schema_task: "Erstellen Sie gültiges JSON-LD für ein zum Thema passendes 'Article'- oder 'FAQPage'-Schema.",
+                code_export: "Ordnen Sie jeden separaten Teil – Metadaten, SERP-Text, Schema, Artikel und Quellen – einem klar gekennzeichneten Markdown-Codeblock zu. JSON-LD gehört in einen ```json-Block, den Blogartikel in einen ```markdown-Block und reine Textvarianten in einzelne ```text-Blöcke. Keine zusätzlichen Erklärungen innerhalb der Codeblöcke; Erläuterungen stehen außerhalb." 
             },
             fr: {
                 role: "Agissez en tant que rédacteur de contenu expert, spécialiste SEO et stratège en GEO.",
@@ -120,11 +138,22 @@
                 lbl_competitors: "Concurrents",
                 // Blog Specifics FR
                 blog_header: "GÉNÉRATION D'ARTICLE DE BLOG",
-                blog_task: "Rédigez un article de blog basé sur le sujet et les mots-clés fournis.",
-                blog_length: "Longueur : Environ 400 à 600 mots. L'article doit tenir confortablement sur un seul écran de bureau.",
-                blog_structure: "Structure : Titre accrocheur (avec mot-clé), Introduction (accroche), 2-3 sous-titres H2, puces pour la lisibilité, et une Conclusion avec appel à l'action (CTA).",
-                blog_seo: "SEO : Intégrez naturellement les mots-clés fournis sans faire de bourrage de mots-clés.",
-                blog_goal: "Objectif : Un article à fort impact, facile à lire, qui informe le lecteur rapidement sans superflu. Le contenu doit être optimisé pour le classement GEO, ce qui signifie qu'il doit répondre directement aux requêtes des utilisateurs et fournir des informations claires et concises facilement extraites par les moteurs de recherche IA."
+                blog_task: "Rédigez un article de blog basé sur le sujet et les mots-clés fournis. L'article doit informer les lecteurs, prouver ses affirmations et aider le client à prendre une décision d'achat ou d'utilisation en toute confiance.",
+                blog_length: "Longueur : Environ 400 à 600 mots, avec suffisamment de profondeur pour expliquer clairement le sujet.",
+                blog_structure: "Structure de l'article :\n- Tout d'abord, rédigez un premier paragraphe qui présente le sujet de la marque ou du produit et explique pourquoi il est important.\n- Dans le chapitre suivant, utilisez la méthode AIDA (Attention, Intérêt, Désir, Action) pour expliquer pourquoi le lecteur aura besoin du produit ou du sujet et comment cela résout un problème réel.\n- Après le chapitre AIDA, poursuivez avec des chapitres de soutien concis sur les spécifications, les applications, les comparaisons ou les conseils d'experts si nécessaire.\n- Terminez l'article par une section dédiée aux Avantages pour le Client qui résume clairement les avantages pratiques, financiers, de sécurité, de confort ou de performance pour le client.",
+                blog_seo: "SEO : Intégrez naturellement les mots-clés fournis dans le texte. N'utilisez pas de bourrage de mots-clés, d'affirmations non étayées ou de spécifications inventées.",
+                blog_goal: "Objectif : Un article à fort impact et autoritaire qui répond directement aux questions du lecteur et est facile à extraire pour les moteurs de réponse IA.",
+                blog_research: "Vérification des faits en ligne obligatoire : Vérifiez toutes les marques, les données sur les produits, les spécifications, la compatibilité, les fonctionnalités, les certifications, les informations sur les prix et les connaissances professionnelles pertinentes. Commencez par les pages officielles du vendeur ou du fabricant, puis confirmez et complétez les faits avec au moins 2 à 3 sources internet réputées et indépendantes, telles que des documents techniques, des publications commerciales reconnues ou des distributeurs du fabricant. Pour chaque déclaration factuelle, privilégiez les sources primaires et ne rapportez que des informations vérifiables. Vérifiez les détails contradictoires et indiquez l'incertitude plutôt que d'inventer des faits. Ne présentez pas le langage marketing comme preuve sans soutien indépendant ou technique.",
+                blog_citations: "Sources : Ajoutez une courte section 'Sources' avec les titres de page exacts et les URL utilisées. Faites la distinction entre les sources officielles des vendeurs et les sources indépendantes. Ne citez pas les pages de résultats des moteurs de recherche ou les forums non soutenus comme preuves.",
+                geo_bullets: [
+                    "Assurez-vous que le contenu est structuré avec des questions claires en H2/H3 qui imitent les requêtes des utilisateurs.",
+                    "Priorisez une réponse directe dans la première phrase de chaque section.",
+                    "Citez des sources crédibles ou des statistiques lorsque cela est possible pour augmenter l'autorité."
+                ],
+                meta_task: "Générez 3 variations de titres de page (maximum 60 caractères) et de descriptions meta (maximum 155 caractères). Rendez-les accrocheurs, riches en mots-clés et précis.",
+                serp_task: "Rédigez un paragraphe de 40 à 50 mots spécifiquement conçu pour remporter un extrait en vedette (position zéro) pour le mot-clé principal.",
+                schema_task: "Fournissez un code JSON-LD valide pour un schéma 'Article' ou 'FAQPage' pertinent pour ce sujet.",
+                code_export: "Formatez chaque livrable séparé - métadonnées, texte SERP, schéma, article et sources - à l'intérieur d'un bloc de code Markdown clairement étiqueté. Placez le JSON-LD dans un bloc ```json. Placez l'article de blog dans un bloc ```markdown. Placez toutes les variations de texte brut dans des blocs ```text individuels. Ne placez pas d'explications supplémentaires à l'intérieur des blocs de code ; gardez-les après ou avant le bloc."
             },
             es: {
                 role: "Actúa como redactor experto de contenidos, especialista en SEO y estratega de GEO.",
@@ -141,11 +170,22 @@
                 lbl_competitors: "Competidores",
                 // Blog Specifics ES
                 blog_header: "GENERACIÓN DE POST PARA BLOG",
-                blog_task: "Escribe un artículo de blog basado en el tema y las palabras clave proporcionadas. El blog debe estar optimizado tanto para los lectores como para los motores de búsqueda, siguiendo las pautas a continuación. Usa el mismo tono especificado en la entrada.",
-                blog_length: "Longitud: Aproximadamente 400 a 600 palabras. Todo el post debe caber cómodamente en una sola pantalla de escritorio.",
-                blog_structure: "Estructura: Título pegadizo (con palabra clave), Introducción (gancho), 2-3 subtítulos H2, viñetas y una conclusión con CTA. Este formato está diseñado para maximizar el compromiso del lector y el rendimiento SEO.",
-                blog_seo: "SEO: Integra naturalmente las palabras clave proporcionadas sin saturar el texto.",
-                blog_goal: "Objetivo: Un post de alto impacto y fácil lectura que informe al lector rápidamente sin relleno. El contenido debe estar optimizado para el ranking GEO, lo que significa que debe responder directamente a las consultas de los usuarios y proporcionar información clara y concisa que pueda ser fácilmente extraída por los motores de búsqueda de IA."
+                blog_task: "Escribe un artículo de blog basado en el tema y las palabras clave proporcionadas. El artículo debe informar a los lectores, demostrar sus afirmaciones y ayudar al cliente a tomar una decisión segura de compra o uso.",
+                blog_length: "Longitud: Aproximadamente 400 a 600 palabras, con suficiente profundidad para explicar claramente el tema.",
+                blog_structure: "Estructura del artículo:\n- Comience con un primer párrafo que presente la marca o el tema del producto y explique por qué es relevante.\n- En el siguiente capítulo, utilice el método AIDA (Atención, Interés, Deseo, Acción) para explicar por qué el lector necesita el producto o tema y cómo resuelve un problema real.\n- Después del capítulo AIDA, continúe con capítulos breves sobre especificaciones, aplicaciones, comparaciones o orientación experta cuando corresponda.\n- Cierre el artículo con una sección dedicada a Beneficios para el Cliente que resuma claramente las ventajas prácticas, económicas, de seguridad, comodidad o rendimiento.",
+                blog_seo: "SEO: Integre naturalmente las palabras clave proporcionadas. No use saturación de palabras clave, afirmaciones no respaldadas ni especificaciones inventadas.",
+                blog_goal: "Objetivo: Un artículo de alto impacto y autoridad que responda directamente las preguntas del lector y pueda ser extraído fácilmente por motores de búsqueda de IA.",
+                blog_research: "Verificación de hechos en línea obligatoria: Verifique todas las marcas, datos del producto, especificaciones, compatibilidad, características, certificaciones, información de precios y conocimientos profesionales relevantes. Comience con las páginas oficiales del vendedor o fabricante, luego confirme y amplíe los hechos con al menos 2-3 fuentes de internet independientes y respetables, como documentación técnica, publicaciones comerciales reconocidas o distribuidores del fabricante. Para cada declaración fáctica, prefiera las fuentes primarias y reporte solo información que sea verificable. Verifique los detalles en conflicto y declare la incertidumbre en lugar de inventar hechos. No presente el lenguaje de marketing como prueba sin respaldo independiente o técnico.",
+                blog_citations: "Fuentes: Agregue una breve sección de 'Fuentes' con los títulos de página exactos y las URL utilizadas. Distinguir fuentes oficiales del vendedor de fuentes independientes. No cite páginas de resultados de motores de búsqueda o foros no respaldados como evidencia.",
+                geo_bullets: [
+                    "Asegúrese de que el contenido esté estructurado con preguntas claras en H2/H3 que imiten las consultas de los usuarios.",
+                    "Priorice una respuesta directa en la primera oración de cada sección.",
+                    "Cite fuentes creíbles o estadísticas cuando sea posible para aumentar la autoridad."
+                ],
+                meta_task: "Genere 3 variaciones de Títulos de Página (máximo 60 caracteres) y Descripciones Meta (máximo 155 caracteres). Hágalo atractivo, rico en palabras clave y preciso.",
+                serp_task: "Escriba un párrafo de 40-50 palabras diseñado específicamente para ganar un Fragmento Destacado (Posición Cero) para la palabra clave principal.",
+                schema_task: "Proporcione un código JSON-LD válido para un esquema 'Article' o 'FAQPage' relevante para este tema.",
+                code_export: "Formatee cada entrega separada: metadatos, texto SERP, esquema, artículo y fuentes, dentro de un bloque de código Markdown claramente etiquetado. Coloque JSON-LD en un bloque ```json. Coloque el artículo del blog en un bloque ```markdown. Coloque cualquier variación de texto en bloques ```text individuales. No coloque explicaciones adicionales dentro de los bloques de código; manténgalas después o antes del bloque."
             },
             it: {
                 role: "Agisci come esperto Content Writer, specialista SEO e stratega GEO.",
@@ -162,11 +202,22 @@
                 lbl_competitors: "Concorrenti",
                 // Blog Specifics IT
                 blog_header: "GENERAZIONE ARTICOLO BLOG",
-                blog_task: "Scrivi un post del blog basato sull'argomento e sulle parole chiave fornite.",
-                blog_length: "Lunghezza: Circa 400-600 parole. L'intero post dovrebbe adattarsi comodamente a una singola schermata desktop. Questo incoraggia l'IA a produrre contenuti focalizzati e di alto impatto piuttosto che testi lunghi e prolissi.",
-                blog_structure: "Struttura: Titolo accattivante (con parola chiave), Introduzione (gancio), 2-3 sottotitoli H2, elenchi puntati e conclusione con CTA. Questo formato è progettato per massimizzare l'engagement dei lettori e le prestazioni SEO.",
-                blog_seo: "SEO: Inserisci naturalmente le parole chiave fornite senza forzature.",
-                blog_goal: "Obiettivo: Un post di alto impatto e facile lettura che informi rapidamente il lettore senza fronzoli. Il contenuto dovrebbe essere ottimizzato per il posizionamento GEO, il che significa che dovrebbe rispondere direttamente alle query degli utenti e fornire informazioni chiare e concise facilmente estratte dai motori di ricerca IA."
+                blog_task: "Scrivi un articolo di blog basato sull'argomento e sulle parole chiave fornite. L'articolo deve informare i lettori, dimostrare le affermazioni e aiutare il cliente a prendere una decisione sicura di acquisto o utilizzo.",
+                blog_length: "Lunghezza: Circa 400-600 parole, con profondità sufficiente a spiegare chiaramente l'argomento.",
+                blog_structure: "Struttura dell'articolo:\n- Inizia con un primo paragrafo che presenti il brand o il tema del prodotto e spieghi perché è importante.\n- Nel capitolo successivo, usa il metodo AIDA (Attenzione, Interesse, Desiderio, Azione) per spiegare perché il lettore ha bisogno del prodotto o dell'argomento e come risolve un problema reale.\n- Dopo il capitolo AIDA, prosegui con brevi capitoli su specifiche, applicazioni, confronti o consulenza professionale, quando pertinenti.\n- Concludi l'articolo con una sezione dedicata ai Benefici per il Cliente che riassuma chiaramente vantaggi pratici, economici, di sicurezza, comfort o prestazioni.",
+                blog_seo: "SEO: Inserisci naturalmente le parole chiave fornite. Evita keyword stuffing, affermazioni prive di prove e specifiche inventate.",
+                blog_goal: "Obiettivo: Un articolo autorevole e ad alto impatto che risponda direttamente alle domande del lettore e possa essere estratto facilmente dai motori di ricerca IA.",
+                blog_research: "Verifica dei fatti online obbligatoria: Verificare tutti i marchi, i dati sui prodotti, le specifiche, la compatibilità, le caratteristiche, le certificazioni, le informazioni sui prezzi e le conoscenze professionali pertinenti. Iniziare con le pagine ufficiali del venditore o del produttore, quindi confermare ed estendere i fatti con almeno 2-3 fonti internet rispettabili e indipendenti, come documentazione tecnica, pubblicazioni commerciali riconosciute o distributori del produttore. Per ogni affermazione fattuale, preferire fonti primarie e riportare solo informazioni verificabili. Controllare i dettagli in conflitto e dichiarare l'incertezza invece di inventare fatti. Non presentare il linguaggio di marketing come prova senza supporto indipendente o tecnico.",
+                blog_citations: "Fonti: Aggiungere una breve sezione 'Fonti' con i titoli esatti delle pagine e gli URL utilizzati. Distinguere le fonti ufficiali del venditore da quelle indipendenti. Non citare pagine di risultati dei motori di ricerca o forum non supportati come prove.",
+                geo_bullets: [
+                    "Assicurati che il contenuto sia strutturato con domande chiare in H2/H3 che imitano le query degli utenti.",
+                    "Dai priorità a una risposta diretta nella prima frase di ciascuna sezione.",
+                    "Cita fonti credibili o statistiche dove possibile per aumentare l'autorità."
+                ],
+                meta_task: "Genera 3 varianti di Titoli di Pagina (massimo 60 caratteri) e Descrizioni Meta (massimo 155 caratteri). Rendili accattivanti, ricchi di parole chiave e precisi.",
+                serp_task: "Scrivi un paragrafo di 40-50 parole specificamente progettato per vincere un Featured Snippet (Posizione Zero) per la parola chiave principale.",
+                schema_task: "Fornisci un codice JSON-LD valido per uno schema 'Article' o 'FAQPage' pertinente a questo argomento.",
+                code_export: "Formatta ogni singolo deliverable - metadati, testo SERP, schema, articolo e fonti - all'interno di un blocco di codice Markdown chiaramente etichettato. Posiziona JSON-LD in un blocco ```json. Posiziona l'articolo del blog in un blocco ```markdown. Posiziona eventuali variazioni di testo normale in singoli blocchi ```text. Non inserire spiegazioni aggiuntive all'interno dei blocchi di codice; mantienile dopo o prima del blocco."
             },
             pl: {
                 role: "Działaj jako ekspert Content Writer, specjalista SEO i strateg GEO.",
@@ -183,11 +234,22 @@
                 lbl_competitors: "Konkurencja",
                 // Blog Specifics PL
                 blog_header: "GENEROWANIE WPISU NA BLOGA",
-                blog_task: "Napisz wpis na bloga na podstawie podanego tematu i słów kluczowych. Blog powinien być zoptymalizowany zarówno dla czytelników, jak i dla wyszukiwarek, zgodnie z poniższymi wytycznymi. Użyj tego samego tonu, który został określony w danych wejściowych.",
-                blog_length: "Długość: Około 400 do 600 słów. Cały wpis powinien wygodnie mieścić się na jednym ekranie komputera. To zachęca AI do tworzenia skoncentrowanej, wysokiej jakości treści, zamiast długich, rozwlekłych tekstów.",
-                blog_structure: "Struktura: Chwytliwy tytuł (ze słowem kluczowym), Wstęp (haczyk), 2-3 podtytuły H2, wypunktowania i zakończenie z CTA. Ten format jest zaprojektowany, aby zmaksymalizować zaangażowanie czytelników i wydajność SEO.",
-                blog_seo: "SEO: Naturalnie wpleć podane słowa kluczowe w tekst bez upychania ich na siłę. Treść powinna być płynna i dostarczać wartości czytelnikowi, jednocześnie sygnalizując swoją relewantność dla wyszukiwarek.",
-                blog_goal: "Cel: Wpis o dużym wpływie, łatwy do przeczytania, który szybko informuje czytelnika bez zbędnych treści. Treść powinna być zoptymalizowana do pozycji GEO. Oznacza to, że powinna bezpośrednio odpowiadać na zapytania użytkowników i dostarczać jasnych, zwięzłych informacji, które mogą być łatwo wyodrębnione przez wyszukiwarki AI."
+                blog_task: "Napisz wpis na blogu na podstawie podanego tematu i słów kluczowych. Artykuł musi informować czytelników, potwierdzać swoje twierdzenia i pomagać klientowi podjąć pewną decyzję zakupową lub użytkową.",
+                blog_length: "Długość: około 400-600 słów, z wystarczającą głębią, aby jasno wyjaśnić temat.",
+                blog_structure: "Struktura artykułu:\n- Rozpocznij od pierwszego akapitu, który przedstawia markę lub temat produktu i wyjaśnia, dlaczego jest istotny.\n- W kolejnym rozdziale zastosuj metodę AIDA (Attention, Interest, Desire, Action), aby wyjaśnić, dlaczego czytelnik będzie potrzebował produktu lub informacji o tym temacie oraz jak rozwiązują one realny problem.\n- Po rozdziale AIDA kontynuuj zwięzłymi rozdziałami dotyczącymi specyfikacji, zastosowań, porównań lub profesjonalnych wskazówek, jeśli są istotne.\n- Zakończ artykuł dedykowaną sekcją Korzyści dla klienta, jasno podsumowującą praktyczne, finansowe, bezpieczeństwa, komfortu lub wydajnościowe korzyści dla klienta.",
+                blog_seo: "SEO: Naturalnie wpleć podane słowa kluczowe. Nie stosuj upychania słów kluczowych, niepopartych twierdzeń ani wymyślonych specyfikacji.",
+                blog_goal: "Cel: Autorytatywny, wysokiej jakości artykuł, który bezpośrednio odpowiada na pytania czytelnika i może być łatwo wyodrębniany przez wyszukiwarki AI.",
+                blog_research: "Obowiązkowe sprawdzanie faktów online: Zweryfikuj wszystkie marki, dane produktów, specyfikacje, zgodność, cechy, certyfikaty, informacje o cenach i odpowiednią wiedzę fachową. Zacznij od oficjalnych stron dostawcy lub producenta, a następnie potwierdź i rozszerz fakty za pomocą co najmniej 2-3 niezależnych, renomowanych źródeł internetowych, takich jak dokumentacja techniczna, uznawane publikacje branżowe lub dystrybutorzy producenta. Dla każdego stwierdzenia faktograficznego preferuj źródła pierwotne i podawaj tylko informacje weryfikowalne. Sprawdź sprzeczne szczegóły i zgłoś niepewność, zamiast wymyślać fakty. Nie przedstawiaj języka marketingowego jako dowodu bez niezależnego lub technicznego wsparcia.",
+                blog_citations: "Źródła: Dodaj krótką sekcję 'Źródła' z dokładnymi tytułami stron i użytymi adresami URL. Rozróżnij oficjalne źródła dostawcy od źródeł niezależnych. Nie cytuj stron wyników wyszukiwania ani niepopartych forów jako dowodów.",
+                geo_bullets: [
+                    "Upewnij się, że treść jest strukturalnie uporządkowana z wyraźnymi pytaniami H2/H3, które naśladują zapytania użytkowników.",
+                    "Priorytetowo traktuj bezpośrednią odpowiedź w pierwszym zdaniu każdej sekcji.",
+                    "Cytuj wiarygodne źródła lub statystyki, gdy to możliwe, aby zwiększyć autorytet."
+                ],
+                meta_task: "Wygeneruj 3 warianty Tytułów Stron (maksymalnie 60 znaków) i Opisów Meta (maksymalnie 155 znaków). Niech będą chwytliwe, bogate w słowa kluczowe i dokładne.",
+                serp_task: "Napisz akapit o długości 40-50 słów, zaprojektowany specjalnie w celu zdobycia Wyróżnionego Fragmentu (Pozycja Zero) dla głównego słowa kluczowego.",
+                schema_task: "Podaj ważny kod JSON-LD dla schematu 'Article' lub 'FAQPage' odpowiedniego dla tego tematu.",
+                code_export: "Sformatuj każde oddzielne dostarczenie - metadane, tekst SERP, schemat, artykuł i źródła - wewnątrz wyraźnie oznaczonego bloku kodu Markdown. Umieść JSON-LD w bloku ```json. Umieść artykuł blogowy w bloku ```markdown. Umieść wszelkie wariacje tekstowe w indywidualnych blokach ```text. Nie umieszczaj dodatkowych wyjaśnień wewnątrz bloków kodu; trzymaj je po lub przed blokiem."
             }
         };
 
@@ -200,10 +262,10 @@
                 competitors: '',
                 tone: 'Professional, Authoritative, yet Accessible',
                 enableGEO: true,
-                enableSchema: true,
+                enableSchema: false,
                 enableMeta: true,
                 enableSerp: true,
-                enableBlog: false // New State
+                enableBlog: true // New State
             });
             const [generatedPrompt, setGeneratedPrompt] = useState('');
             const [copySuccess, setCopySuccess] = useState(false);
@@ -255,10 +317,12 @@
                 // 3. GEO Specifics
                 if (enableGEO) {
                     promptParts.push(`\n### GEO (GENERATIVE ENGINE OPTIMIZATION) STRATEGY\n${tmpl.geo_instruction}`);
-                    promptParts.push("- Ensure the content is structured with clear H2/H3 questions that mimic user queries.");
-                    promptParts.push("- Prioritize direct answers in the first sentence of each section.");
-                    promptParts.push("- Cite credible sources or statistics where possible to increase authority.");
+                    (tmpl.geo_bullets || []).forEach((bullet) => promptParts.push(`- ${bullet}`));
                 }
+
+                // Research and source verification apply to every factual deliverable
+                promptParts.push(`\n### SOURCE VERIFICATION\n${tmpl.blog_research}`);
+                promptParts.push(`- ${tmpl.blog_citations}`);
 
                 // 4. Output Requirements
                 promptParts.push(`\n### TASK & OUTPUTS`);
@@ -266,24 +330,24 @@
                 let stepCounter = 1;
 
                 if (enableMeta) {
-                    promptParts.push(`${stepCounter}. **Meta Data**: Generate 3 variations of Page Titles (max 60 chars) and Meta Descriptions (max 155 chars). Ensure they are click-worthy and keyword-rich.`);
+                    promptParts.push(`${stepCounter}. **Meta Data**: ${tmpl.meta_task}`);
                     stepCounter++;
                 }
                 
                 if (enableSerp) {
-                    promptParts.push(`${stepCounter}. **SERP Snippet Optimization**: Write a paragraph (40-50 words) specifically designed to win a Featured Snippet (Position Zero) for the main keyword.`);
+                    promptParts.push(`${stepCounter}. **SERP Snippet Optimization**: ${tmpl.serp_task}`);
                     stepCounter++;
                 }
 
                 if (enableSchema) {
-                    promptParts.push(`${stepCounter}. **Schema Markup**: Provide valid JSON-LD code for 'Article' or 'FAQPage' schema relevant to this topic.`);
+                    promptParts.push(`${stepCounter}. **Schema Markup**: ${tmpl.schema_task}`);
                     stepCounter++;
                 }
 
                 // 5. Blog Post Section (If checked)
                 if (enableBlog) {
                     promptParts.push(`\n### ${tmpl.blog_header}`);
-                    promptParts.push(`${tmpl.blog_task}`);
+                    promptParts.push(tmpl.blog_task);
                     promptParts.push(`**Constraints & Formatting:**`);
                     promptParts.push(`- ${tmpl.blog_length}`);
                     promptParts.push(`- ${tmpl.blog_structure}`);
@@ -294,8 +358,8 @@
 
                 // 6. Final Formatting
                 promptParts.push(`\n${tmpl.format}`);
-                promptParts.push("- Use Markdown.");
-                promptParts.push("- Be concise and eliminate fluff.");
+                promptParts.push(`- ${tmpl.code_export}`);
+                promptParts.push("- Use Markdown outside code blocks and keep the response concise.");
                 if(outputLang !== 'en') promptParts.push(`- ${tmpl.lang_instruction}`);
 
                 setGeneratedPrompt(promptParts.join('\n'));
@@ -456,7 +520,7 @@
                                         <span className="text-xs text-slate-400 dark:text-slate-500">{inputs.topic ? 'Ready to copy' : 'Waiting for input...'}</span>
                                     </div>
                                 </div>
-                                <div className="flex-grow overflow-auto p-6 pt-16 bg-white dark:bg-slate-900 text-gray-900 dark:text-slate-300 font-mono text-sm leading-relaxed whitespace-pre-wrap">
+                                <div className="flex-grow overflow-auto p-6 pt-16 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-300 font-mono text-sm leading-relaxed whitespace-pre-wrap">
                                     {generatedPrompt}
                                 </div>
                                 <div className="p-4 bg-white dark:bg-gray-800 border-t border-gray-100 dark:border-gray-700 flex justify-end">
