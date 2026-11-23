@@ -10,7 +10,7 @@ This tool focuses specifically on **SEO** (Search Engine Optimization) and **GEO
 
 - **Multi-Language Support:** Generate prompts instantly in English, German, French, Spanish, Italian, and Polish.
 - **Writing Framework Selector:** Choose AIDA (default), PAS, BAB, AIDAR, or FAB. Each framework has a localized explanation and guides the generated article without exposing framework names or stage labels in the article text.
-- **Copy-Ready Blog Content:** Prompts request plain-text blog articles inside `text` code blocks, with plain-text headings and paragraphs for easy copying into a blog editor.
+- **Copy-Ready Blog Content:** Prompts request blog articles as directly rendered Markdown outside code blocks, with clear headings and balanced paragraphs suitable for justified body-text layouts.
 - **Product-Claim Guidance:** Prompts caution against describing CE marking as certification or a quality mark, reserve “certified” for verified independent certification, and allow ABE or Teilegutachten claims only when verified for the specific product.
 - **GEO Strategy Integration:** Includes specific instructions for "Answer Engine Optimization" to help content appear in AI overviews.
 - **Dynamic Customization:**
@@ -32,7 +32,7 @@ The application uses a "Prompt Engineering" logic to construct a comprehensive i
 2. **Input Data:** Fill in your topic, keywords, and competitor info.
 3. **Choose a Writing Framework:** Select AIDA, PAS, BAB, AIDAR, or FAB. AIDA is selected by default; the explanation beside the selector describes each framework's stages and intended use.
 4. **Configure:** Toggle specific needs like Schema or GEO strategy.
-5. **Copy:** The tool constructs a prompt in the preview window. Paste it into your AI tool of choice to generate copy-ready plain-text blog content.
+5. **Copy:** The tool constructs a prompt in the preview window. Paste it into your AI tool of choice to generate a copy-ready Markdown blog article outside a code block.
 
 ## 📦 Installation & Usage
 
